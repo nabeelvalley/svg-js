@@ -1,13 +1,13 @@
-import ElementType from '../enums/ElementType'
-import SVGManager from '..'
-import SVGAttribute from '../enums/SVGAttribute'
+import SVGElementType from '../enums/SVGElementType'
+import SVGManager from '../api/SVGManager'
+import SVGAttributeKV from '../interfaces/SVGAttributeKV'
 
 interface SVGManagerConfiguration {
   parent?: HTMLElement | SVGSVGElement | SVGManager
   id?: string
   class?: string
-  type?: ElementType
-  attributes?: { name: SVGAttribute; value: number | string }[]
+  type?: SVGElementType
+  attributes?: SVGAttributeKV[]
   style?: CSSStyleDeclaration
 }
 

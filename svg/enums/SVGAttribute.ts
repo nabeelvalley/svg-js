@@ -1,10 +1,10 @@
 enum SVGAttribute {
   /**
-   * SVG ELement height
+   * SVG `svg` and `rect` height
    */
   height = 'height',
   /**
-   * SVG Element width
+   * SVG `svg` and `rect` width
    */
   width = 'width',
   /**
@@ -60,7 +60,7 @@ enum SVGAttribute {
    */
   points = 'points',
   /**
-   * SVG Shape Stroke Colour
+   * SVG Shape Stroke Color
    */
   stroke = 'stroke',
   /**
@@ -68,7 +68,7 @@ enum SVGAttribute {
    */
   strokeWidth = 'stroke-width',
   /**
-   * SVG Shape Fill Colour
+   * SVG Shape Fill Color
    */
   fill = 'fill',
   /**

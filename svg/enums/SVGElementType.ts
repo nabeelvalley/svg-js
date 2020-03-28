@@ -1,4 +1,4 @@
-enum ElementType {
+enum SVGElementType {
   /**
    * SVG Base `svg` element
    */
@@ -37,4 +37,4 @@ enum ElementType {
   path = 'path',
 }
 
-export default ElementType
+export default SVGElementType
