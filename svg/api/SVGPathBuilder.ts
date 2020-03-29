@@ -3,7 +3,7 @@ import SVGElementType from '../enums/SVGElementType'
 import SVGAttribute from '../enums/SVGAttribute'
 
 /**
- * Class for building an SVG path from Line Commands, information on how these work can be found on [MDN](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths)
+ * Class for drawing an SVG path from Line Commands, information on how these work can be found on [MDN](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths)
  */
 class SVGPathBuilder extends BasicPainter {
   private _lineCommands: string[] = []
@@ -15,47 +15,90 @@ class SVGPathBuilder extends BasicPainter {
     this._path = this.createSVGElement(SVGElementType.path) as SVGPathElement
   }
 
+  /**
+   * `Move To` Command, this is usually the first command and specifies what coordinates to start drawing at
+   * @param x line end x coordinate
+   * @param y line end y coordinate
+   */
   public moveAbsolute(x: number, y: number): this {
     this._lineCommands.push(`M ${x} ${y}`)
     return this
   }
 
+  /**
+   * The relative form of the `Move To` command, this is usually the first command and specifies what coordinates to start drawing at
+   * @param dx line end relative x coordinate
+   * @param dy line end relative y coordinate
+   */
   public moveRelative(dx: number, dy: number): this {
     this._lineCommands.push(`m ${dx} ${dy}`)
     return this
   }
 
-  public buildLineAbsolute(x: number, y: number): this {
+  /**
+   * `Line To` command for drawing a generic line between the given coordinates
+   * @param x line end x coordinate
+   * @param y line end y coordinate
+   */
+  public drawLineAbsolute(x: number, y: number): this {
     this._lineCommands.push(`L ${x} ${y}`)
     return this
   }
 
-  public buildLineRelative(dx: number, dy: number): this {
+  /**
+   * Relative form of the `Line To` command for drawing a generic line between the given coordinates
+   */
+  public drawLineRelative(dx: number, dy: number): this {
     this._lineCommands.push(`l ${dx} ${dy}`)
     return this
   }
 
-  public buildHorizontalAbsolute(x: number): this {
+  /**
+   * `Line To` command for drawing horizontal lines
+   * @param x line end x coordinate
+   */
+  public drawHorizontalAbsolute(x: number): this {
     this._lineCommands.push(`H ${x}`)
     return this
   }
 
-  public buildHorizontalRelative(dx: number): this {
+  /**
+   * Relative form of the `Line To` command for drawing horizontal lines
+   * @param dx line end relative x coordinate
+   */
+  public drawHorizontalRelative(dx: number): this {
     this._lineCommands.push(`h ${dx}`)
     return this
   }
 
-  public buildVerticalAbsolute(y: number): this {
+  /**
+   * `Line To` command for drawing vertical lines
+   * @param y line end y coordinate
+   */
+  public drawVerticalAbsolute(y: number): this {
     this._lineCommands.push(`V ${y}`)
     return this
   }
 
-  public buildVerticalRelative(dy: number): this {
+  /**
+   * Relative form of the `Line To` command for drawing vertical lines
+   * @param dy line end relative y coordinate
+   */
+  public drawVerticalRelative(dy: number): this {
     this._lineCommands.push(`v ${dy}`)
     return this
   }
 
-  public buildCubicAbsolute(
+  /**
+   * A Cubic Bezier curve with the first control point at the start of the line and the second at the end of the line
+   * @param x1 first control point x coordinate
+   * @param y1 first control point y coordinate
+   * @param x2 second control point x coordinate
+   * @param y2 second control point y coordinate
+   * @param x line end x coordinate
+   * @param y line end y coordinate
+   */
+  public drawCubicAbsolute(
     x1: number,
     y1: number,
     x2: number,
@@ -67,7 +110,16 @@ class SVGPathBuilder extends BasicPainter {
     return this
   }
 
-  public buildCubicRelative(
+  /**
+   * Relativive form of the Cubic Bezier curve with the first control point at the start of the line and the second at the end of the line
+   * @param dx1 first control point x length
+   * @param dy1 first control point y length
+   * @param dx2 second control point x length
+   * @param dy2 second control point y length
+   * @param dx line end relative x coordinate
+   * @param dy line end relative y coordinate
+   */
+  public drawCubicRelative(
     dx1: number,
     dy1: number,
     dx2: number,
@@ -79,7 +131,14 @@ class SVGPathBuilder extends BasicPainter {
     return this
   }
 
-  public buildJointCubicAbsolute(
+  /**
+   * A Cubic Bezier curve with the first control point at the end of the previous curve and the second at the end of the line
+   * @param x2 second control point x coordinate
+   * @param y2 second control point y coordinate
+   * @param x line end x coordinate
+   * @param y line end y coordinate
+   */
+  public drawJointCubicAbsolute(
     x2: number,
     y2: number,
     x: number,
@@ -89,7 +148,14 @@ class SVGPathBuilder extends BasicPainter {
     return this
   }
 
-  public buildJointCubicRelative(
+  /**
+   * Relative form of a Cubic Bezier curve with the first control point at the end of that at the previous curve and the second at the end of the line
+   * @param dx2 second control point x length
+   * @param dy2 second control point y length
+   * @param dx line end relative x coordinate
+   * @param dy line end relative y coordinate
+   */
+  public drawJointCubicRelative(
     dx2: number,
     dy2: number,
     dx: number,
@@ -99,7 +165,14 @@ class SVGPathBuilder extends BasicPainter {
     return this
   }
 
-  public buildQuadraticAbsolute(
+  /**
+   * A Quadratic Bezier curve with the first control point with a single control point
+   * @param x1 control point x coordinate
+   * @param y1 control point y coordinate
+   * @param x line end x coordinate
+   * @param y line end y coordinate
+   */
+  public drawQuadraticAbsolute(
     x1: number,
     y1: number,
     x: number,
@@ -109,7 +182,14 @@ class SVGPathBuilder extends BasicPainter {
     return this
   }
 
-  public buildQuadraticRelative(
+  /**
+   * Relative form of a Quadratic Bezier curve with the first control point with a single control point
+   * @param dx1 control point x length
+   * @param dy1 control point y length
+   * @param dx line end relative x coordinate
+   * @param dy line end relative y coordinate
+   */
+  public drawQuadraticRelative(
     dx1: number,
     dy1: number,
     dx: number,
@@ -119,17 +199,37 @@ class SVGPathBuilder extends BasicPainter {
     return this
   }
 
-  public buildJointQuadraticAbsolute(x: number, y: number): this {
+  /**
+   * A Quadratic Bezier curve that is joint to a previous curve, the control point is inferred from the end control of the previous curve
+   * @param x line end x coordinate
+   * @param y line end y coordinate
+   */
+  public drawJointQuadraticAbsolute(x: number, y: number): this {
     this._lineCommands.push(`T ${x} ${y}`)
     return this
   }
 
-  public buildJointQuadraticRelative(dx: number, dy: number): this {
+  /**
+   * Relative form of a Quadratic Bezier curve that is joint to a previous curve, the control point is inferred from the end control of the previous curve
+   * @param dx control point x length
+   * @param dy control point y length
+   */
+  public drawJointQuadraticRelative(dx: number, dy: number): this {
     this._lineCommands.push(`t ${dx} ${dy}`)
     return this
   }
 
-  public buildArcAbsolute(
+  /**
+   * Arc Curve based on an ellipse with `rx` and `ry` radii
+   * @param rx x radius of arc
+   * @param ry y radius of arc
+   * @param xAxisRotation x axis rotation in degrees
+   * @param largeArcFlag large arc sweep flag value
+   * @param sweepFlag sweep flag value
+   * @param x arc x coordinate
+   * @param y arc y coordinate
+   */
+  public drawArcAbsolute(
     rx: number,
     ry: number,
     xAxisRotation: number,
@@ -139,12 +239,22 @@ class SVGPathBuilder extends BasicPainter {
     y: number
   ): this {
     this._lineCommands.push(
-      `A ${rx} ${ry} ${xAxisRotation} ${+largeArcFlag} ${+sweepFlag} ${x} ${y}`
+      `A ${rx} ${ry}, ${xAxisRotation}, ${+largeArcFlag}, ${+sweepFlag}, ${x} ${y}`
     )
     return this
   }
 
-  public buildArcRelative(
+  /**
+   * Relative form of an Arc Curve based on an ellipse with `rx` and `ry` radii
+   * @param rx x radius of arc
+   * @param ry y radius of arc
+   * @param xAxisRotation x axis rotation in degrees
+   * @param largeArcFlag large arc sweep flag value
+   * @param sweepFlag sweep flag value
+   * @param dx arc relative x coordinate
+   * @param dy arc relative y coordinate
+   */
+  public drawArcRelative(
     rx: number,
     ry: number,
     xAxisRotation: number,
@@ -154,30 +264,45 @@ class SVGPathBuilder extends BasicPainter {
     dy: number
   ): this {
     this._lineCommands.push(
-      `a ${rx} ${ry} ${xAxisRotation} ${+largeArcFlag} ${+sweepFlag} ${dx} ${dy}`
+      `a ${rx} ${ry}, ${xAxisRotation}, ${+largeArcFlag}, ${+sweepFlag}, ${dx} ${dy}`
     )
     return this
   }
 
+  /**
+   * `Close Path` command
+   */
   public closePath() {
     this._lineCommands.push('Z')
   }
+
   /**
-   * Build the final path and apply the fill, stroke, and stroke-width properties to the element
+   * Add line command to path
+   * @param command SVG Line Command or array of Line Commands as a string
    */
-  public build() {
+  public addLineCommand(commands: string | string[]) {
+    if (typeof commands === 'string') this._lineCommands.push(commands)
+    else this._lineCommands.push(...commands)
+  }
+
+  /**
+   * Apply the current line commands to the path and set the fill, stroke, and stroke-width properties to the element
+   */
+  public build(): this {
     this.applyPainterAttributes(this._path)
 
     const d = this.toString()
 
     this._path.setAttribute(SVGAttribute.d, d)
+
+    return this
   }
 
   /**
    * Get the string representation of a path, this is also the `d` property for a path
    */
   public toString(): string {
-    return this._lineCommands.join()
+    return this._lineCommands.join('\n')
   }
 
   /**

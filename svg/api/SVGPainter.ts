@@ -5,6 +5,7 @@ import SVGManager from './SVGManager'
 import SVGAttribute from '../enums/SVGAttribute'
 import SVGAttributeKV from '../interfaces/SVGAttributeKV'
 import BasicPainter from '../interfaces/BasicPainter'
+import SVGPathBuilder from './SVGPathBuilder'
 
 class SVGPainter extends BasicPainter {
   protected _parent: SVGSVGElement | SVGGElement | HTMLElement
@@ -206,15 +207,20 @@ class SVGPainter extends BasicPainter {
   }
 
   /**
-   * Paint a `path` using the current fill and stroke settings
+   * Paint a `path` using the current fill and stroke settings. The `path` param can either be a `d` value for the path, or a built `SVGPathBuilder` object instance. To create a path from a fully defined SVGPathElement use the `paintSVG` command
    * @param d
    * @param attributes
    */
-  public paintPath(d: string, attributes?: SVGAttributeKV[]): this {
+  public paintPath(
+    path: string | SVGPathBuilder,
+    attributes?: SVGAttributeKV[]
+  ): this {
+    const d = path instanceof SVGPathBuilder ? path.toString() : path
+
     return this.handleElementCreation(
       SVGElementType.path,
       (e: SVGElement) => {
-        e.setAttribute(SVGAttribute.d, d)
+        e.setAttribute(SVGAttribute.d, path.toString())
       },
       attributes
     )

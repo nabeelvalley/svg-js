@@ -20,7 +20,7 @@ const renderPainter = (node: HTMLElement) => {
   }
 
   new SVGPainter({
-    height: '120px',
+    height: '400px',
     width: '80vw',
     parent: node,
   })
@@ -35,6 +35,14 @@ const renderPainter = (node: HTMLElement) => {
     .paintSequence(generateFlowerSequence(40, 40))
     .paintSequence(generateFlowerSequence(200, 50))
     .paintLine(100, 10, 400, 100)
+    .paintPath(
+      `M 10 315
+    L 110 215
+    A 36 60 0 0 1 150.71 170.29
+    L 172.55 152.45
+    A 30 50 -45 0 1 215.1 109.9
+    L 315 10`
+    )
     .paintOver()
 }
 
