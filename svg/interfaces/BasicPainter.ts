@@ -1,5 +1,4 @@
 import SVGAttribute from '../enums/SVGAttribute'
-import SVGElementType from '../enums/SVGElementType'
 import NodeUpdater from './NodeUpdater'
 
 /**
