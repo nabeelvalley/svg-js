@@ -3,13 +3,18 @@ import SVGPainterConfiguration from '../interfaces/SVGPainterConfiguration'
 import SVGElementType from '../enums/SVGElementType'
 import SVGManager from './SVGManager'
 import SVGAttribute from '../enums/SVGAttribute'
-import SVGAttributeKV from '../interfaces/SVGAttributeKV'
 import BasicPainter from '../interfaces/BasicPainter'
 import SVGPathBuilder from './SVGPathBuilder'
+import KeyValuePair from '../interfaces/KeyValuePair'
+import AnimationAttribute from '../enums/AnimationAttribute'
+import Exceptions from '../enums/Exceptions'
+import createSVGElement from '../functions/createSVGElement'
+import NodeUpdater from '../interfaces/NodeUpdater'
+import applyMixins from '../functions/applyMixins'
 
 class SVGPainter extends BasicPainter {
-  protected _parent: SVGSVGElement | SVGGElement | HTMLElement
-  public getParent(): SVGSVGElement | SVGGElement | HTMLElement {
+  protected _parent: SVGElement
+  public getParent(): SVGElement {
     return this._parent
   }
 
@@ -29,24 +34,31 @@ class SVGPainter extends BasicPainter {
   }
 
   /**
-   * Create a new Painter Instance
+   * Get the last SVG Element from the canvas that was created last
+   */
+  protected getWorkingNode(): SVGElement {
+    if (!this._canvas.length) throw Exceptions.emptyCanvas
+
+    const workingNode = this._canvas[this._canvas.length - 1]
+    return workingNode
+  }
+
+  /**
+   * Create a new Painter Instance. If an SVGElement is provided this will be set as the parent, if a DOM node is provded then an SVG node will be created inside of this
    */
   constructor(options?: SVGPainterConfiguration) {
     super()
-    if (
-      options?.parent instanceof SVGSVGElement ||
-      options?.parent instanceof SVGGElement
-    ) {
+
+    debugger
+
+    if (options?.parent instanceof SVGElement) {
       this._parent = options.parent
-    } else {
-      this._parent = this.createSVGElement(SVGElementType.svg) as SVGSVGElement
-
-      options.parent.appendChild(this._parent)
-    }
-
-    if (this._parent instanceof SVGSVGElement) {
       this._parent.setAttribute(SVGAttribute.height, options?.height.toString())
       this._parent.setAttribute(SVGAttribute.width, options?.width.toString())
+    } else {
+      this._parent = createSVGElement(SVGElementType.svg) as SVGSVGElement
+
+      options.parent.appendChild(this._parent)
     }
 
     this._canvas = []
@@ -59,7 +71,7 @@ class SVGPainter extends BasicPainter {
    * @param color background color
    */
   public setBackground(color: string): this {
-    let element = this.createSVGElement(SVGElementType.rect) as SVGRectElement
+    let element = createSVGElement(SVGElementType.rect) as SVGRectElement
 
     element.setAttribute(SVGAttribute.height, this._height)
     element.setAttribute(SVGAttribute.width, this._width)
@@ -84,7 +96,7 @@ class SVGPainter extends BasicPainter {
     width: number | string,
     x: number | string,
     y: number | string,
-    attributes?: SVGAttributeKV[]
+    attributes?: KeyValuePair<SVGAttribute, number | string>[]
   ): this {
     return this.handleElementCreation(
       SVGElementType.rect,
@@ -109,7 +121,7 @@ class SVGPainter extends BasicPainter {
     r: number | string,
     cx: number | string,
     cy: number | string,
-    attributes?: SVGAttributeKV[]
+    attributes?: KeyValuePair<SVGAttribute, number | string>[]
   ): this {
     return this.handleElementCreation(
       SVGElementType.circle,
@@ -135,7 +147,7 @@ class SVGPainter extends BasicPainter {
     ry: number | string,
     cx: number | string,
     cy: number | string,
-    attributes?: SVGAttributeKV[]
+    attributes?: KeyValuePair<SVGAttribute, number | string>[]
   ): this {
     return this.handleElementCreation(
       SVGElementType.ellipse,
@@ -162,7 +174,7 @@ class SVGPainter extends BasicPainter {
     y1: number | string,
     x2: number | string,
     y2: number | string,
-    attributes?: SVGAttributeKV[]
+    attributes?: KeyValuePair<SVGAttribute, number | string>[]
   ): this {
     return this.handleElementCreation(
       SVGElementType.line,
@@ -181,7 +193,10 @@ class SVGPainter extends BasicPainter {
    * @param points `
    * @param attributes
    */
-  public paintPolyline(points: string, attributes?: SVGAttributeKV[]): this {
+  public paintPolyline(
+    points: string,
+    attributes?: KeyValuePair<SVGAttribute, number | string>[]
+  ): this {
     return this.handleElementCreation(
       SVGElementType.polyline,
       (e: SVGElement) => {
@@ -196,7 +211,10 @@ class SVGPainter extends BasicPainter {
    * @param points
    * @param attributes
    */
-  public paintPolygon(points: string, attributes?: SVGAttributeKV[]): this {
+  public paintPolygon(
+    points: string,
+    attributes?: KeyValuePair<SVGAttribute, number | string>[]
+  ): this {
     return this.handleElementCreation(
       SVGElementType.polygon,
       (e: SVGElement) => {
@@ -213,7 +231,7 @@ class SVGPainter extends BasicPainter {
    */
   public paintPath(
     path: string | SVGPathBuilder,
-    attributes?: SVGAttributeKV[]
+    attributes?: KeyValuePair<SVGAttribute, number | string>[]
   ): this {
     const d = path instanceof SVGPathBuilder ? path.toString() : path
 
@@ -243,9 +261,9 @@ class SVGPainter extends BasicPainter {
   private handleElementCreation(
     type: SVGElementType,
     custom: (SVGElement) => void,
-    attributes: SVGAttributeKV[]
+    attributes: KeyValuePair<SVGAttribute, number | string>[]
   ): this {
-    let element = this.createSVGElement(type)
+    let element = createSVGElement(type)
 
     this.applyPainterAttributes(element)
 
@@ -260,15 +278,15 @@ class SVGPainter extends BasicPainter {
 
   private applyAdditionalAttributes(
     element: SVGElement,
-    attributes: SVGAttributeKV[]
+    attributes: KeyValuePair<SVGAttribute, number | string>[]
   ): void {
     attributes?.forEach(attribute =>
-      element.setAttribute(attribute?.name, attribute?.value?.toString())
+      element.setAttribute(attribute?.key, attribute?.value?.toString())
     )
   }
 
   /**
-   * Arbitrary segment of code where the SVGPainter that will be passed is the current SVGPainter instance.This is useful for reusing paint segments/instructions
+   * Arbitrary segment of code wthat will operate on `this` SVGPainter instance. This is useful for reusing paint segments/instructions
    * @param sequence function to be executed on the current painter instance
    * @param restorePainterState whether or not the current fill, stroke, strokeWidth settings should be restored after the paint sequence has been run
    */
@@ -288,7 +306,6 @@ class SVGPainter extends BasicPainter {
       this._strokeWidth = initStrokeWidth
     }
 
-    console.log(initStroke)
     return this
   }
 

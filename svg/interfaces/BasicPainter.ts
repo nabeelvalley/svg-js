@@ -1,9 +1,11 @@
 import SVGAttribute from '../enums/SVGAttribute'
 import SVGElementType from '../enums/SVGElementType'
+import NodeUpdater from './NodeUpdater'
 
-export default abstract class BasicPainter {
-  protected _svgns = 'http://www.w3.org/2000/svg'
-
+/**
+ * Common functionality for updating the colour and stroke styles of SVG elements
+ */
+abstract class BasicPainter extends NodeUpdater {
   protected _fill: string = 'white'
   /**
    * Get fill color for future paints, default white
@@ -58,12 +60,6 @@ export default abstract class BasicPainter {
   }
 
   /**
-   * Create an SVG Element based on type, essentially a wrapper for `createElementNS`
-   */
-  protected createSVGElement = (type: SVGElementType): SVGElement =>
-    document.createElementNS(this._svgns, type) as SVGElement
-
-  /**
    * Apply the fill, stroke, and stroke-width attributes to element based on the current painter state
    * @param element element to apply the attributes to
    */
@@ -73,3 +69,5 @@ export default abstract class BasicPainter {
     element.setAttribute(SVGAttribute.strokeWidth, this._strokeWidth)
   }
 }
+
+export default BasicPainter

@@ -1,6 +1,7 @@
 import BasicPainter from '../interfaces/BasicPainter'
 import SVGElementType from '../enums/SVGElementType'
 import SVGAttribute from '../enums/SVGAttribute'
+import createSVGElement from '../functions/createSVGElement'
 
 /**
  * Class for drawing an SVG path from Line Commands, information on how these work can be found on [MDN](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths)
@@ -12,7 +13,14 @@ class SVGPathBuilder extends BasicPainter {
   constructor() {
     super()
 
-    this._path = this.createSVGElement(SVGElementType.path) as SVGPathElement
+    this._path = createSVGElement(SVGElementType.path) as SVGPathElement
+  }
+
+  /**
+   * Get the last current SVG Element from the canvas that was created last
+   */
+  protected getWorkingNode(): SVGElement {
+    return this.build().toPath()
   }
 
   /**
@@ -306,9 +314,10 @@ class SVGPathBuilder extends BasicPainter {
   }
 
   /**
-   * Get the built SVG `path` element
+   * Build and get the SVG `path` element
    */
   public toPath(): SVGPathElement {
+    this.build()
     return this._path
   }
 }

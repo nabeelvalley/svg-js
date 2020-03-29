@@ -8,46 +8,43 @@ class SVGManager {
   /**
    * SVG root element
    */
-  public root?: SVGSVGElement | SVGGElement
+  public root?: SVGElement
 
   /**
    * The current SVG element
    */
-  public self?: SVGSVGElement | SVGGElement
+  public self?: SVGElement
+
+  private svgns = 'http://www.w3.org/2000/svg'
 
   /**
    * Create an SVG root element, element will be added as a child to the parent if provided. Create `svg` node if parent is `div`, create `g` node if parent is `svg` unless explicitly stated
    * @param options configuration options for SVG root element
    */
   constructor(options?: SVGManagerConfiguration) {
-    if (
-      options?.parent instanceof SVGSVGElement ||
-      options?.parent instanceof SVGGElement
-    ) {
+    if (options?.parent instanceof SVGElement) {
       this.root = options.parent
     } else {
-      const svgns = 'http://www.w3.org/2000/svg'
-
       if (options?.parent instanceof HTMLElement) {
         this.self = document.createElementNS(
-          svgns,
+          this.svgns,
           options?.type || SVGElementType.svg
-        )
+        ) as SVGElement
 
         this.root = this.self
         options.parent.appendChild(this.self)
       } else if (options?.parent instanceof SVGManager) {
         this.self = document.createElementNS(
-          svgns,
+          this.svgns,
           options?.type || SVGElementType.g
-        )
+        ) as SVGElement
 
         this.root = options.parent?.root
         options.parent.appendChild(this.self)
       }
 
       options?.attributes?.forEach(attribute =>
-        this.self.setAttribute(attribute.name, attribute.value.toString())
+        this.self.setAttribute(attribute.key, attribute.value.toString())
       )
     }
 

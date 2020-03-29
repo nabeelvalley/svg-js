@@ -35,6 +35,10 @@ enum SVGElementType {
    * SVG `path` element
    */
   path = 'path',
+  /**
+   * SVG `animate` element, applicable properties are in the AnimationAttribute enum
+   */
+  animate = 'animate',
 }
 
 export default SVGElementType

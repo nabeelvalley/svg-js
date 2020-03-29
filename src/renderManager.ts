@@ -7,8 +7,8 @@ const renderManager = (node: HTMLElement) => {
     parent: node,
     id: 'manager-view',
     attributes: [
-      { name: SVGAttribute.height, value: '120' },
-      { name: SVGAttribute.width, value: '90vw' },
+      { key: SVGAttribute.height, value: '120' },
+      { key: SVGAttribute.width, value: '90vw' },
     ],
   })
 
@@ -17,9 +17,9 @@ const renderManager = (node: HTMLElement) => {
     id: 'background',
     type: SVGElementType.rect,
     attributes: [
-      { name: SVGAttribute.height, value: '100' },
-      { name: SVGAttribute.width, value: '80vw' },
-      { name: SVGAttribute.fill, value: 'blue' },
+      { key: SVGAttribute.height, value: '100' },
+      { key: SVGAttribute.width, value: '80vw' },
+      { key: SVGAttribute.fill, value: 'blue' },
     ],
   })
 
@@ -28,8 +28,8 @@ const renderManager = (node: HTMLElement) => {
     parent: root,
     type: SVGElementType.g,
     attributes: [
-      { name: SVGAttribute.height, value: '20px' },
-      { name: SVGAttribute.width, value: '20px' },
+      { key: SVGAttribute.height, value: '20px' },
+      { key: SVGAttribute.width, value: '20px' },
     ],
   })
 
@@ -43,10 +43,10 @@ const renderManager = (node: HTMLElement) => {
     parent: root,
     type: SVGElementType.circle,
     attributes: [
-      { name: SVGAttribute.r, value: '5px' },
-      { name: SVGAttribute.cx, value: '2cm' },
-      { name: SVGAttribute.cy, value: '50px' },
-      { name: SVGAttribute.fill, value: 'red' },
+      { key: SVGAttribute.r, value: '5px' },
+      { key: SVGAttribute.cx, value: '2cm' },
+      { key: SVGAttribute.cy, value: '50px' },
+      { key: SVGAttribute.fill, value: 'red' },
     ],
   })
 }
