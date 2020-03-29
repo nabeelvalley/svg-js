@@ -6,14 +6,42 @@ import SVGAttribute from '../enums/SVGAttribute'
 import SVGAttributeKV from '../interfaces/SVGAttributeKV'
 
 class SVGPainter {
-  private parent: SVGSVGElement | SVGGElement | HTMLElement
-  private canvas: SVGElement[]
-  private height: string
-  private width: string
-  private fill: string = 'white'
-  private stroke: string = 'black'
-  private strokeWidth: string = '1px'
-  private svgns = 'http://www.w3.org/2000/svg'
+  private _svgns = 'http://www.w3.org/2000/svg'
+
+  private _parent: SVGSVGElement | SVGGElement | HTMLElement
+  public getParent(): SVGSVGElement | SVGGElement | HTMLElement {
+    return this._parent
+  }
+
+  private _canvas: SVGElement[]
+  public getCanvas(): SVGElement[] {
+    return this._canvas
+  }
+
+  private _height: string
+  public getHeight(value: string) {
+    this._height = value
+  }
+
+  private _width: string
+  public getWidth(): string {
+    return this._width
+  }
+
+  private _fill: string = 'white'
+  public getFill(): string {
+    return this._fill
+  }
+
+  private _stroke: string = 'black'
+  public getStroke(): string {
+    return this._stroke
+  }
+
+  private _strokeWidth: string = '1px'
+  public getStrokeWidth(): string {
+    return this._strokeWidth
+  }
 
   /**
    * Create a new Painter Instance
@@ -23,42 +51,42 @@ class SVGPainter {
       options?.parent instanceof SVGSVGElement ||
       options?.parent instanceof SVGGElement
     ) {
-      this.parent = options.parent
+      this._parent = options.parent
     } else {
-      this.parent = document.createElementNS(
-        this.svgns,
+      this._parent = document.createElementNS(
+        this._svgns,
         SVGElementType.svg
       ) as SVGSVGElement
 
-      options.parent.appendChild(this.parent)
+      options.parent.appendChild(this._parent)
     }
 
-    if (this.parent instanceof SVGSVGElement) {
-      this.parent.setAttribute(SVGAttribute.height, options?.height.toString())
-      this.parent.setAttribute(SVGAttribute.width, options?.width.toString())
+    if (this._parent instanceof SVGSVGElement) {
+      this._parent.setAttribute(SVGAttribute.height, options?.height.toString())
+      this._parent.setAttribute(SVGAttribute.width, options?.width.toString())
     }
 
-    this.canvas = []
-    this.height = options.height.toString()
-    this.width = options.width.toString()
+    this._canvas = []
+    this._height = options.height.toString()
+    this._width = options.width.toString()
   }
 
   /**
    * Set the background color of the canvas. This will be set as the backmost element in the painting
    * @param color background color
    */
-  public setBackground(color: string) {
+  public setBackground(color: string): this {
     let element = document.createElementNS(
-      this.svgns,
+      this._svgns,
       SVGElementType.rect
     ) as SVGRectElement
 
-    element.setAttribute(SVGAttribute.height, this.height)
-    element.setAttribute(SVGAttribute.width, this.width)
+    element.setAttribute(SVGAttribute.height, this._height)
+    element.setAttribute(SVGAttribute.width, this._width)
 
     element.setAttribute(SVGAttribute.fill, color)
 
-    this.canvas.push(element)
+    this._canvas.push(element)
 
     return this
   }
@@ -67,8 +95,8 @@ class SVGPainter {
    * Set fill color for future paints, default white
    * @param color fill color
    */
-  public setFill(color: string) {
-    this.fill = color
+  public setFill(color: string): this {
+    this._fill = color
     return this
   }
 
@@ -76,8 +104,8 @@ class SVGPainter {
    * Set stroke color for future paints, default black
    * @param color stroke color
    */
-  public setStroke(color: string) {
-    this.stroke = color
+  public setStroke(color: string): this {
+    this._stroke = color
     return this
   }
 
@@ -85,8 +113,8 @@ class SVGPainter {
    * Set stroke width for future paints, default 1px
    * @param width stroke width
    */
-  public setStrokeWidth(width: number | string) {
-    this.strokeWidth = width.toString()
+  public setStrokeWidth(width: number | string): this {
+    this._strokeWidth = width.toString()
     return this
   }
 
@@ -104,7 +132,7 @@ class SVGPainter {
     x: number | string,
     y: number | string,
     attributes?: SVGAttributeKV[]
-  ) {
+  ): this {
     return this.handleElementCreation(
       SVGElementType.rect,
       (e: SVGElement) => {
@@ -129,7 +157,7 @@ class SVGPainter {
     cx: number | string,
     cy: number | string,
     attributes?: SVGAttributeKV[]
-  ) {
+  ): this {
     return this.handleElementCreation(
       SVGElementType.circle,
       (e: SVGElement) => {
@@ -155,7 +183,7 @@ class SVGPainter {
     cx: number | string,
     cy: number | string,
     attributes?: SVGAttributeKV[]
-  ) {
+  ): this {
     return this.handleElementCreation(
       SVGElementType.ellipse,
       (e: SVGElement) => {
@@ -182,7 +210,7 @@ class SVGPainter {
     y1: number | string,
     y2: number | string,
     attributes?: SVGAttributeKV[]
-  ) {
+  ): this {
     return this.handleElementCreation(
       SVGElementType.line,
       (e: SVGElement) => {
@@ -200,7 +228,7 @@ class SVGPainter {
    * @param points `
    * @param attributes
    */
-  public paintPolyline(points: string, attributes?: SVGAttributeKV[]) {
+  public paintPolyline(points: string, attributes?: SVGAttributeKV[]): this {
     return this.handleElementCreation(
       SVGElementType.polyline,
       (e: SVGElement) => {
@@ -215,7 +243,7 @@ class SVGPainter {
    * @param points
    * @param attributes
    */
-  public paintPolygon(points: string, attributes?: SVGAttributeKV[]) {
+  public paintPolygon(points: string, attributes?: SVGAttributeKV[]): this {
     return this.handleElementCreation(
       SVGElementType.polygon,
       (e: SVGElement) => {
@@ -230,7 +258,7 @@ class SVGPainter {
    * @param d
    * @param attributes
    */
-  public paintPath(d: string, attributes?: SVGAttributeKV[]) {
+  public paintPath(d: string, attributes?: SVGAttributeKV[]): this {
     return this.handleElementCreation(
       SVGElementType.path,
       (e: SVGElement) => {
@@ -249,8 +277,8 @@ class SVGPainter {
     type: SVGElementType,
     custom: (SVGElement) => void,
     attributes: SVGAttributeKV[]
-  ) {
-    let element = document.createElementNS(this.svgns, type) as SVGElement
+  ): this {
+    let element = document.createElementNS(this._svgns, type) as SVGElement
 
     this.applyPainterAttributes(element)
 
@@ -258,7 +286,7 @@ class SVGPainter {
 
     this.applyAdditionalAttributes(element, attributes)
 
-    this.canvas.push(element)
+    this._canvas.push(element)
 
     return this
   }
@@ -267,41 +295,71 @@ class SVGPainter {
    * Apply the fill, stroke, and stroke-width attributes to element based on the current painter state
    * @param element element to apply the attributes to
    */
-  private applyPainterAttributes(element: SVGElement) {
-    element.setAttribute(SVGAttribute.fill, this.fill)
-    element.setAttribute(SVGAttribute.stroke, this.stroke)
-    element.setAttribute(SVGAttribute.strokeWidth, this.strokeWidth)
+  private applyPainterAttributes(element: SVGElement): void {
+    element.setAttribute(SVGAttribute.fill, this._fill)
+    element.setAttribute(SVGAttribute.stroke, this._stroke)
+    element.setAttribute(SVGAttribute.strokeWidth, this._strokeWidth)
   }
 
   private applyAdditionalAttributes(
     element: SVGElement,
     attributes: SVGAttributeKV[]
-  ) {
+  ): void {
     attributes?.forEach(attribute =>
       element.setAttribute(attribute?.name, attribute?.value?.toString())
     )
   }
 
   /**
-   * Replace all the existing content with the new content
+   * Arbitrary segment of code where the SVGPainter that will be passed is the current SVGPainter instance.This is useful for reusing paint segments/instructions
+   * @param sequence function to be executed on the current painter instance
+   * @param restorePainterState whether or not the current fill, stroke, strokeWidth settings should be restored after the paint sequence has been run
    */
-  public paintOver() {
-    const canvasAsHtml = this.canvas.map(el => el.outerHTML).join('')
+  public paintSequence(
+    sequence: (SVGPainter) => void,
+    restorePainterState: boolean = true
+  ): this {
+    const initfill = this._fill
+    const initStroke = this._stroke
+    const initStrokeWidth = this._strokeWidth
 
-    this.parent.innerHTML = canvasAsHtml
+    sequence(this)
 
-    return this.parent.innerHTML
+    if (restorePainterState) {
+      this._fill = initfill
+      this._stroke = initStroke
+      this._strokeWidth = initStrokeWidth
+    }
+
+    console.log(initStroke)
+    return this
   }
 
   /**
-   * Add the new content to the existing content
+   * Replace all the existing content with the new content
    */
-  public paint() {
-    const canvasAsHtml = this.canvas.map(el => el.outerHTML).join('')
+  public paintOver(): this {
+    const canvasAsHtml = this._canvas.map(el => el.outerHTML).join('')
 
-    this.parent.innerHTML += canvasAsHtml
+    this._parent.innerHTML = canvasAsHtml
 
-    return this.parent.innerHTML
+    return this
+  }
+
+  /**
+   * Paint all staged paints
+   * @param clearPaints whether or not to clear painted items from staging. Setting this to false will mean these SVG objects are created again on next paint
+   */
+  public paint(clearPaints = true): this {
+    const canvasAsHtml = this._canvas.map(el => el.outerHTML).join('')
+
+    this._parent.innerHTML += canvasAsHtml
+
+    if (clearPaints) {
+      this._canvas = []
+    }
+
+    return this
   }
 }
 
