@@ -1,7 +1,7 @@
 import SVGPainter from '../svg/api/SVGPainter'
 
 const renderPainter = (node: HTMLElement) => {
-  const flowerGenerator = (x, y) => {
+  const generateFlowerSequence = (x, y) => {
     return (painter: SVGPainter) => {
       const radius = 10
 
@@ -29,12 +29,12 @@ const renderPainter = (node: HTMLElement) => {
     .paintCircle(50, 20, 20)
     .setFill('blue')
     .paintRectangle(20, 30, 10, 10)
-    .paintLine(10, 500, 10, 100)
+    .paintLine(10, 10, 500, 100)
     .setStroke('lightgreen')
-    .paintLine(100, 100, 10, 400)
-    .paintSequence(flowerGenerator(40, 40))
-    .paintSequence(flowerGenerator(200, 50))
-    .paintLine(100, 400, 10, 100)
+    .paintLine(100, 10, 100, 400)
+    .paintSequence(generateFlowerSequence(40, 40))
+    .paintSequence(generateFlowerSequence(200, 50))
+    .paintLine(100, 10, 400, 100)
     .paintOver()
 }
 

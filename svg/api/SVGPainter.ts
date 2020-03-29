@@ -4,59 +4,41 @@ import SVGElementType from '../enums/SVGElementType'
 import SVGManager from './SVGManager'
 import SVGAttribute from '../enums/SVGAttribute'
 import SVGAttributeKV from '../interfaces/SVGAttributeKV'
+import BasicPainter from '../interfaces/BasicPainter'
 
-class SVGPainter {
-  private _svgns = 'http://www.w3.org/2000/svg'
-
-  private _parent: SVGSVGElement | SVGGElement | HTMLElement
+class SVGPainter extends BasicPainter {
+  protected _parent: SVGSVGElement | SVGGElement | HTMLElement
   public getParent(): SVGSVGElement | SVGGElement | HTMLElement {
     return this._parent
   }
 
-  private _canvas: SVGElement[]
+  protected _canvas: SVGElement[]
   public getCanvas(): SVGElement[] {
     return this._canvas
   }
 
-  private _height: string
+  protected _height: string
   public getHeight(value: string) {
     this._height = value
   }
 
-  private _width: string
+  protected _width: string
   public getWidth(): string {
     return this._width
-  }
-
-  private _fill: string = 'white'
-  public getFill(): string {
-    return this._fill
-  }
-
-  private _stroke: string = 'black'
-  public getStroke(): string {
-    return this._stroke
-  }
-
-  private _strokeWidth: string = '1px'
-  public getStrokeWidth(): string {
-    return this._strokeWidth
   }
 
   /**
    * Create a new Painter Instance
    */
   constructor(options?: SVGPainterConfiguration) {
+    super()
     if (
       options?.parent instanceof SVGSVGElement ||
       options?.parent instanceof SVGGElement
     ) {
       this._parent = options.parent
     } else {
-      this._parent = document.createElementNS(
-        this._svgns,
-        SVGElementType.svg
-      ) as SVGSVGElement
+      this._parent = this.createSVGElement(SVGElementType.svg) as SVGSVGElement
 
       options.parent.appendChild(this._parent)
     }
@@ -76,10 +58,7 @@ class SVGPainter {
    * @param color background color
    */
   public setBackground(color: string): this {
-    let element = document.createElementNS(
-      this._svgns,
-      SVGElementType.rect
-    ) as SVGRectElement
+    let element = this.createSVGElement(SVGElementType.rect) as SVGRectElement
 
     element.setAttribute(SVGAttribute.height, this._height)
     element.setAttribute(SVGAttribute.width, this._width)
@@ -88,33 +67,6 @@ class SVGPainter {
 
     this._canvas.push(element)
 
-    return this
-  }
-
-  /**
-   * Set fill color for future paints, default white
-   * @param color fill color
-   */
-  public setFill(color: string): this {
-    this._fill = color
-    return this
-  }
-
-  /**
-   * Set stroke color for future paints, default black
-   * @param color stroke color
-   */
-  public setStroke(color: string): this {
-    this._stroke = color
-    return this
-  }
-
-  /**
-   * Set stroke width for future paints, default 1px
-   * @param width stroke width
-   */
-  public setStrokeWidth(width: number | string): this {
-    this._strokeWidth = width.toString()
     return this
   }
 
@@ -206,8 +158,8 @@ class SVGPainter {
    */
   public paintLine(
     x1: number | string,
-    x2: number | string,
     y1: number | string,
+    x2: number | string,
     y2: number | string,
     attributes?: SVGAttributeKV[]
   ): this {
@@ -215,8 +167,8 @@ class SVGPainter {
       SVGElementType.line,
       (e: SVGElement) => {
         e.setAttribute(SVGAttribute.x1, x1.toString())
-        e.setAttribute(SVGAttribute.x2, x2.toString())
         e.setAttribute(SVGAttribute.y1, y1.toString())
+        e.setAttribute(SVGAttribute.x2, x2.toString())
         e.setAttribute(SVGAttribute.y2, y2.toString())
       },
       attributes
@@ -269,6 +221,15 @@ class SVGPainter {
   }
 
   /**
+   * Paints given SVG element to the canvas as-is
+   * @param element element to paint
+   */
+  public paintSVG(element: SVGElement) {
+    this._canvas.push(element)
+    return this
+  }
+
+  /**
    * handle the shared element creation functionality
    * @param type type of elemnt being created
    * @param custom custom attributes to set or functionality to apply to element before applying the additional attrbiutes
@@ -278,7 +239,7 @@ class SVGPainter {
     custom: (SVGElement) => void,
     attributes: SVGAttributeKV[]
   ): this {
-    let element = document.createElementNS(this._svgns, type) as SVGElement
+    let element = this.createSVGElement(type)
 
     this.applyPainterAttributes(element)
 
@@ -289,16 +250,6 @@ class SVGPainter {
     this._canvas.push(element)
 
     return this
-  }
-
-  /**
-   * Apply the fill, stroke, and stroke-width attributes to element based on the current painter state
-   * @param element element to apply the attributes to
-   */
-  private applyPainterAttributes(element: SVGElement): void {
-    element.setAttribute(SVGAttribute.fill, this._fill)
-    element.setAttribute(SVGAttribute.stroke, this._stroke)
-    element.setAttribute(SVGAttribute.strokeWidth, this._strokeWidth)
   }
 
   private applyAdditionalAttributes(
