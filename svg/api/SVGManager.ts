@@ -1,5 +1,6 @@
 import SVGManagerConfiguration from '../interfaces/SVGManagerConfiguration'
 import SVGElementType from '../enums/SVGElementType'
+import createSVGElement from '../functions/createSVGElement'
 
 /**
  * Class for managing and interacting with SVG Elements
@@ -15,8 +16,6 @@ class SVGManager {
    */
   public self?: SVGElement
 
-  private svgns = 'http://www.w3.org/2000/svg'
-
   /**
    * Create an SVG root element, element will be added as a child to the parent if provided. Create `svg` node if parent is `div`, create `g` node if parent is `svg` unless explicitly stated
    * @param options configuration options for SVG root element
@@ -26,18 +25,12 @@ class SVGManager {
       this.root = options.parent
     } else {
       if (options?.parent instanceof HTMLElement) {
-        this.self = document.createElementNS(
-          this.svgns,
-          options?.type || SVGElementType.svg
-        ) as SVGElement
+        this.self = createSVGElement(options?.type || SVGElementType.svg)
 
         this.root = this.self
         options.parent.appendChild(this.self)
       } else if (options?.parent instanceof SVGManager) {
-        this.self = document.createElementNS(
-          this.svgns,
-          options?.type || SVGElementType.g
-        ) as SVGElement
+        this.self = createSVGElement(options?.type || SVGElementType.g)
 
         this.root = options.parent?.root
         options.parent.appendChild(this.self)
@@ -52,7 +45,7 @@ class SVGManager {
   }
 
   /**
-   * Remove child from root node
+   * Append child to root node
    * @param node child node
    */
   appendChild(node: SVGElement) {
