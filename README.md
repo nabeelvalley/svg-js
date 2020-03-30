@@ -13,7 +13,8 @@ Javascript
 - [ ] Advanced Animations
 - [ ] Usings and Definitions
 - [ ] Filters
-- [ ] ->> NEXT
+- [ ] ->> NEXT Implement all features listed on the
+      [MDN SVG Documentation](https://developer.mozilla.org/en-US/docs/Web/SVG/Element)
 
 ## Usage
 
@@ -42,7 +43,7 @@ new SVGPainter({
 ```
 
 Additionally reusable segments can be defined using a sequence or a sequence
-generator that defines an animated flower:
+generator. For example, the one below defines an animated flower:
 
 ```ts
 const generateFlowerSequence = (x, y) => {
