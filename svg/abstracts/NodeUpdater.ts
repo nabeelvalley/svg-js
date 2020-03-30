@@ -1,8 +1,9 @@
-import KeyValuePair from './KeyValuePair'
-import AnimationAttribute from '../enums/AnimationAttribute'
 import SVGElementType from '../enums/SVGElementType'
 import Exceptions from '../enums/Exceptions'
 import createSVGElement from '../functions/createSVGElement'
+import KeyValuePair from '../interfaces/KeyValuePair'
+import AnimationGenericAttriute from '../enums/animation/AnimationGenericAttribute'
+import AnimationTimingAttribute from '../enums/animation/AnimationTiming'
 
 /**
  * Interface for adding special nodes to SVG Elements
@@ -19,7 +20,10 @@ abstract class NodeUpdater {
    */
   public adddAnimation(
     animation:
-      | KeyValuePair<AnimationAttribute, number | string>[]
+      | KeyValuePair<
+          AnimationGenericAttriute | AnimationTimingAttribute,
+          number | string
+        >[]
       | SVGAnimateElement
   ): this {
     return this.handleLastNodeAppend(SVGElementType.animate, animation)

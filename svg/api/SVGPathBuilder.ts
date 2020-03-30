@@ -1,7 +1,7 @@
-import BasicPainter from '../interfaces/BasicPainter'
 import SVGElementType from '../enums/SVGElementType'
-import SVGAttribute from '../enums/SVGAttribute'
 import createSVGElement from '../functions/createSVGElement'
+import SVGShapeAttribute from '../enums/SVGShapeAttribute'
+import BasicPainter from '../abstracts/BasicPainter'
 
 /**
  * Class for drawing an SVG path from Line Commands, information on how these work can be found on [MDN](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths)
@@ -301,7 +301,7 @@ class SVGPathBuilder extends BasicPainter {
 
     const d = this.toString()
 
-    this._path.setAttribute(SVGAttribute.d, d)
+    this._path.setAttribute(SVGShapeAttribute.d, d)
 
     return this
   }

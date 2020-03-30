@@ -1,4 +1,7 @@
-enum SVGAttribute {
+/**
+ * Attributes for base SVG Shape Elements
+ */
+enum SVGShapeAttribute {
   /**
    * SVG `svg` and `rect` height
    */
@@ -7,10 +10,6 @@ enum SVGAttribute {
    * SVG `svg` and `rect` width
    */
   width = 'width',
-  /**
-   * HTML/SVG Element Class
-   */
-  class = 'class',
   /**
    * SVG `rect` Element top-left x position
    */
@@ -77,4 +76,4 @@ enum SVGAttribute {
   d = 'd',
 }
 
-export default SVGAttribute
+export default SVGShapeAttribute
