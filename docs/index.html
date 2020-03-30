@@ -67,6 +67,8 @@
 				<a href="#svgjs" id="svgjs" style="color: inherit; text-decoration: none;">
 					<h1>SVG.js</h1>
 				</a>
+				<p>A zero-dependency library for building and working with SVGs for Typescript and
+				Javascript</p>
 				<blockquote>
 					<p><a href="https://nabeelvalley.github.io/svg-js/">Full Documentation</a></p>
 				</blockquote>
@@ -80,13 +82,11 @@
 					<li><input disabled="" type="checkbox"> Advanced Animations</li>
 					<li><input disabled="" type="checkbox"> Usings and Definitions</li>
 					<li><input disabled="" type="checkbox"> Filters</li>
-					<li><input disabled="" type="checkbox"> -&gt;&gt; NEXT</li>
+					<li><input disabled="" type="checkbox"> -&gt;&gt; NEXT Implement all features listed on the<pre><code>[<span class="hljs-string">MDN SVG Documentation</span>](<span class="hljs-link">https://developer.mozilla.org/en-US/docs/Web/SVG/Element</span>)</code></pre></li>
 				</ul>
 				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
 					<h2>Usage</h2>
 				</a>
-				<p>A zero-dependency library for building and working with SVGs for Typescript and
-				Javascript</p>
 				<p>There are two different API&#39;s exposed for building SVG&#39;s. The Painter API and
 				the Manager API</p>
 				<a href="#painter-api" id="painter-api" style="color: inherit; text-decoration: none;">
@@ -108,7 +108,7 @@
   .paintRectangle(<span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>)
   .paintOver()</code></pre>
 				<p>Additionally reusable segments can be defined using a sequence or a sequence
-				generator that defines an animated flower:</p>
+				generator. For example, the one below defines an animated flower:</p>
 				<pre><code class="language-ts">const generateFlowerSequence = (x, y) =&gt; {
   return (painter: SVGPainter) =&gt; {
     const radius = 10
@@ -124,7 +124,7 @@
       .setFill('white')
       .setStrokeWidth(2)
       .paintCircle(radius, x, y)
-      .adddAnimation({
+      .addAnimation({
         id: 'test',
         attributeName: GenericShapeAttributeName.r,
         values: `${radius};${radius / 2};${radius}`,

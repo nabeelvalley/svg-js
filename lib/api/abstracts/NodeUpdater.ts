@@ -18,9 +18,7 @@ abstract class NodeUpdater {
    * Add an `animate` to the last created element. Will create either a new animate object with the provided attributes or simply append a given animation
    * @param animation an SVG `animate` element or the list of attributes of one
    */
-  public adddAnimation(
-    animation: AnimationAttribute | SVGAnimateElement
-  ): this {
+  public addAnimation(animation: AnimationAttribute | SVGAnimateElement): this {
     return this.handleLastNodeAppend(
       ElementType.animate,
       animation instanceof SVGAnimateElement

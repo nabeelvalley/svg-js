@@ -61,7 +61,7 @@ const generateFlowerSequence = (x, y) => {
       .setFill('white')
       .setStrokeWidth(2)
       .paintCircle(radius, x, y)
-      .adddAnimation({
+      .addAnimation({
         id: 'test',
         attributeName: GenericShapeAttributeName.r,
         values: `${radius};${radius / 2};${radius}`,
