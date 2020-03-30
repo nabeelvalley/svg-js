@@ -1,6 +1,6 @@
 import SVGManager from '../svg/api/SVGManager'
-import SVGElementType from '../svg/enums/SVGElementType'
-import SVGShapeAttribute from '../svg/enums/shape/SVGShapeAttribute'
+import ElementType from '../svg/elements/ElementType'
+import SVGShapeAttribute from '../svg/elements/shape/SVGShapeAttribute'
 
 const renderManager = (node: HTMLElement) => {
   let root = new SVGManager({
@@ -15,7 +15,7 @@ const renderManager = (node: HTMLElement) => {
   let background = new SVGManager({
     parent: root,
     id: 'background',
-    type: SVGElementType.rect,
+    type: ElementType.rect,
     attributes: [
       { key: SVGShapeAttribute.height, value: '100' },
       { key: SVGShapeAttribute.width, value: '80vw' },
@@ -26,7 +26,7 @@ const renderManager = (node: HTMLElement) => {
   let snake = new SVGManager({
     id: 'snake',
     parent: root,
-    type: SVGElementType.g,
+    type: ElementType.g,
     attributes: [
       { key: SVGShapeAttribute.height, value: '20px' },
       { key: SVGShapeAttribute.width, value: '20px' },
@@ -41,7 +41,7 @@ const renderManager = (node: HTMLElement) => {
   let food = new SVGManager({
     class: 'food',
     parent: root,
-    type: SVGElementType.circle,
+    type: ElementType.circle,
     attributes: [
       { key: SVGShapeAttribute.r, value: '5px' },
       { key: SVGShapeAttribute.cx, value: '2cm' },

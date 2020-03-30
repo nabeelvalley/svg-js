@@ -1,13 +1,12 @@
-import SVGPainterConfiguration from '../interfaces/SVGPainterConfiguration'
-import SVGElementType from '../enums/SVGElementType'
-import SVGGlobalAttribute from '../enums/SVGGlobalAttribute'
+import SVGPainterConfiguration from './configuration/SVGPainterConfiguration'
+import ElementType from '../elements/ElementType'
 import SVGPathBuilder from './SVGPathBuilder'
-import KeyValuePair from '../interfaces/KeyValuePair'
-import Exceptions from '../enums/Exceptions'
-import createSVGElement from '../functions/createSVGElement'
-import BasicPainter from '../abstracts/BasicPainter'
-import SVGShapeAttribute from '../enums/shape/SVGShapeAttribute'
-import ShapeAttribute from '../enums/shape/ShapeAttribute'
+import KeyValuePair from '../generic/KeyValuePair'
+import Exceptions from '../generic/enums/Exceptions'
+import createSVGElement from '../generic/functions/createSVGElement'
+import BasicPainter from './abstracts/BasicPainter'
+import SVGShapeAttribute from '../elements/shape/SVGShapeAttribute'
+import ShapeAttribute from '../elements/shape/ShapeAttribute'
 
 class SVGPainter extends BasicPainter {
   protected _parent: SVGElement
@@ -49,7 +48,7 @@ class SVGPainter extends BasicPainter {
     if (options?.parent instanceof SVGElement) {
       this._parent = options.parent
     } else {
-      this._parent = createSVGElement(SVGElementType.svg) as SVGSVGElement
+      this._parent = createSVGElement(ElementType.svg) as SVGSVGElement
 
       options.parent.appendChild(this._parent)
     }
@@ -73,7 +72,7 @@ class SVGPainter extends BasicPainter {
    * @param color background color
    */
   public setBackground(color: string): this {
-    let element = createSVGElement(SVGElementType.rect) as SVGRectElement
+    let element = createSVGElement(ElementType.rect) as SVGRectElement
 
     element.setAttribute(SVGShapeAttribute.height, this._height)
     element.setAttribute(SVGShapeAttribute.width, this._width)
@@ -101,7 +100,7 @@ class SVGPainter extends BasicPainter {
     attributes?: KeyValuePair<ShapeAttribute, number | string>[]
   ): this {
     return this.handleElementCreation(
-      SVGElementType.rect,
+      ElementType.rect,
       (e: SVGElement) => {
         e.setAttribute(SVGShapeAttribute.height, height.toString())
         e.setAttribute(SVGShapeAttribute.width, width.toString())
@@ -126,7 +125,7 @@ class SVGPainter extends BasicPainter {
     attributes?: KeyValuePair<ShapeAttribute, number | string>[]
   ): this {
     return this.handleElementCreation(
-      SVGElementType.circle,
+      ElementType.circle,
       (e: SVGElement) => {
         e.setAttribute(SVGShapeAttribute.r, r.toString())
         e.setAttribute(SVGShapeAttribute.cx, cx.toString())
@@ -152,7 +151,7 @@ class SVGPainter extends BasicPainter {
     attributes?: KeyValuePair<ShapeAttribute, number | string>[]
   ): this {
     return this.handleElementCreation(
-      SVGElementType.ellipse,
+      ElementType.ellipse,
       (e: SVGElement) => {
         e.setAttribute(SVGShapeAttribute.rx, rx.toString())
         e.setAttribute(SVGShapeAttribute.ry, ry.toString())
@@ -179,7 +178,7 @@ class SVGPainter extends BasicPainter {
     attributes?: KeyValuePair<ShapeAttribute, number | string>[]
   ): this {
     return this.handleElementCreation(
-      SVGElementType.line,
+      ElementType.line,
       (e: SVGElement) => {
         e.setAttribute(SVGShapeAttribute.x1, x1.toString())
         e.setAttribute(SVGShapeAttribute.y1, y1.toString())
@@ -200,7 +199,7 @@ class SVGPainter extends BasicPainter {
     attributes?: KeyValuePair<ShapeAttribute, number | string>[]
   ): this {
     return this.handleElementCreation(
-      SVGElementType.polyline,
+      ElementType.polyline,
       (e: SVGElement) => {
         e.setAttribute(SVGShapeAttribute.points, points)
       },
@@ -218,7 +217,7 @@ class SVGPainter extends BasicPainter {
     attributes?: KeyValuePair<ShapeAttribute, number | string>[]
   ): this {
     return this.handleElementCreation(
-      SVGElementType.polygon,
+      ElementType.polygon,
       (e: SVGElement) => {
         e.setAttribute(SVGShapeAttribute.points, points)
       },
@@ -236,7 +235,7 @@ class SVGPainter extends BasicPainter {
     attributes?: KeyValuePair<ShapeAttribute, number | string>[]
   ): this {
     return this.handleElementCreation(
-      SVGElementType.path,
+      ElementType.path,
       (e: SVGElement) => {
         e.setAttribute(SVGShapeAttribute.d, path.toString())
       },
@@ -259,7 +258,7 @@ class SVGPainter extends BasicPainter {
    * @param custom custom attributes to set or functionality to apply to element before applying the additional attrbiutes
    */
   private handleElementCreation(
-    type: SVGElementType,
+    type: ElementType,
     custom: (SVGElement) => void,
     attributes: KeyValuePair<ShapeAttribute, number | string>[]
   ): this {

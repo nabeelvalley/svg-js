@@ -1,4 +1,4 @@
-enum SVGElementType {
+enum ElementType {
   /**
    * SVG Base `svg` element
    */
@@ -41,4 +41,4 @@ enum SVGElementType {
   animate = 'animate',
 }
 
-export default SVGElementType
+export default ElementType

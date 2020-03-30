@@ -16,6 +16,7 @@ const renderPainter = (node: HTMLElement) => {
         .setFill('white')
         .setStrokeWidth(2)
         .paintCircle(radius, x, y)
+        .adddAnimation({ id: 'test' } as Animation)
     }
   }
 

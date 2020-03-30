@@ -1,11 +1,8 @@
-import SVGElementType from '../enums/SVGElementType'
-import Exceptions from '../enums/Exceptions'
-import createSVGElement from '../functions/createSVGElement'
-import KeyValuePair from '../interfaces/KeyValuePair'
-import AnimationGenericAttriute from '../enums/animation/AnimationGenericAttribute'
-import AnimationTimingAttribute from '../enums/animation/AnimationTiming'
-import AnimationAttribute from '../enums/animation/AnimationAttribute'
-
+import ElementType from '../../elements/ElementType'
+import objectToKeyValueArray from '../../generic/functions/objectToKeyValuePair'
+import KeyValuePair from '../../generic/KeyValuePair'
+import createSVGElement from '../../generic/functions/createSVGElement'
+import Exceptions from '../../generic/enums/Exceptions'
 /**
  * Interface for adding special nodes to SVG Elements
  */
@@ -19,12 +16,13 @@ abstract class NodeUpdater {
    * Add an `animate` to the last created element. Will create either a new animate object with the provided attributes or simply append a given animation
    * @param animation an SVG `animate` element or the list of attributes of one
    */
-  public adddAnimation(
-    animation:
-      | KeyValuePair<AnimationAttribute, number | string>[]
-      | SVGAnimateElement
-  ): this {
-    return this.handleLastNodeAppend(SVGElementType.animate, animation)
+  public adddAnimation(animation: Animation | SVGAnimateElement): this {
+    return this.handleLastNodeAppend(
+      ElementType.animate,
+      animation instanceof SVGAnimateElement
+        ? animation
+        : objectToKeyValueArray(animation)
+    )
   }
 
   /**
@@ -33,8 +31,8 @@ abstract class NodeUpdater {
    * @param data an SVG Element or the list of attributes of one
    */
   private handleLastNodeAppend(
-    type: SVGElementType,
-    data: KeyValuePair<any, number | string>[] | SVGElement
+    type: ElementType,
+    data: KeyValuePair<string, number | string>[] | SVGElement
   ): this {
     const node = this.getWorkingNode()
 

@@ -1,6 +1,6 @@
-import SVGManagerConfiguration from '../interfaces/SVGManagerConfiguration'
-import SVGElementType from '../enums/SVGElementType'
-import createSVGElement from '../functions/createSVGElement'
+import SVGManagerConfiguration from './configuration/SVGManagerConfiguration'
+import createSVGElement from '../generic/functions/createSVGElement'
+import ElementType from '../elements/ElementType'
 
 /**
  * Class for managing and interacting with SVG Elements
@@ -25,12 +25,12 @@ class SVGManager {
       this.root = options.parent
     } else {
       if (options?.parent instanceof HTMLElement) {
-        this.self = createSVGElement(options?.type || SVGElementType.svg)
+        this.self = createSVGElement(options?.type || ElementType.svg)
 
         this.root = this.self
         options.parent.appendChild(this.self)
       } else if (options?.parent instanceof SVGManager) {
-        this.self = createSVGElement(options?.type || SVGElementType.g)
+        this.self = createSVGElement(options?.type || ElementType.g)
 
         this.root = options.parent?.root
         options.parent.appendChild(this.self)
