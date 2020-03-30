@@ -67,8 +67,7 @@
 				<a href="#svgjs" id="svgjs" style="color: inherit; text-decoration: none;">
 					<h1>SVG.js</h1>
 				</a>
-				<p>A zero-dependency library for building and working with SVGs for Typescript and
-				Javascript</p>
+				<p>A zero-dependency library for building and working with SVGs for Typescript and Javascript</p>
 				<blockquote>
 					<p><a href="https://nabeelvalley.github.io/svg-js/">Full Documentation</a></p>
 				</blockquote>
@@ -82,18 +81,16 @@
 					<li><input disabled="" type="checkbox"> Advanced Animations</li>
 					<li><input disabled="" type="checkbox"> Usings and Definitions</li>
 					<li><input disabled="" type="checkbox"> Filters</li>
-					<li><input disabled="" type="checkbox"> -&gt;&gt; NEXT Implement all features listed on the<pre><code>[<span class="hljs-string">MDN SVG Documentation</span>](<span class="hljs-link">https://developer.mozilla.org/en-US/docs/Web/SVG/Element</span>)</code></pre></li>
+					<li><input disabled="" type="checkbox"> -&gt;&gt; NEXT Implement all features listed on the <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element">MDN SVG Documentation</a></li>
 				</ul>
 				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
 					<h2>Usage</h2>
 				</a>
-				<p>There are two different API&#39;s exposed for building SVG&#39;s. The Painter API and
-				the Manager API</p>
+				<p>There are two different API&#39;s exposed for building SVG&#39;s. The Painter API and the Manager API</p>
 				<a href="#painter-api" id="painter-api" style="color: inherit; text-decoration: none;">
 					<h2>Painter API</h2>
 				</a>
-				<p>The Painter API allows SVGs to be build using a builder pattern, an example of
-				this can be seen below:</p>
+				<p>The Painter API allows SVGs to be build using a builder pattern, an example of this can be seen below:</p>
 				<pre><code class="language-ts"><span class="hljs-keyword">const</span> target: HTMLElement = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'target'</span>)
 
 <span class="hljs-keyword">new</span> SVGPainter({
@@ -107,8 +104,7 @@
   .setFill(<span class="hljs-string">'blue'</span>)
   .paintRectangle(<span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>)
   .paintOver()</code></pre>
-				<p>Additionally reusable segments can be defined using a sequence or a sequence
-				generator. For example, the one below defines an animated flower:</p>
+				<p>Additionally reusable segments can be defined using a sequence or a sequence generator. For example, the one below defines an animated flower:</p>
 				<pre><code class="language-ts">const generateFlowerSequence = (x, y) =&gt; {
   return (painter: SVGPainter) =&gt; {
     const radius = 10
@@ -133,8 +129,7 @@
       } as AnimationAttribute)
   }
 }</code></pre>
-				<p>The generated shape can be applied to the canvas using the <code>paintSequence</code>
-				method:</p>
+				<p>The generated shape can be applied to the canvas using the <code>paintSequence</code> method:</p>
 				<pre><code class="language-ts"><span class="hljs-keyword">new</span> SVGPainter({
   height: <span class="hljs-string">'400px'</span>,
   width: <span class="hljs-string">'80vw'</span>,
@@ -150,8 +145,7 @@
 				<a href="#manager-api" id="manager-api" style="color: inherit; text-decoration: none;">
 					<h2>Manager API</h2>
 				</a>
-				<p>The manager API defines a more declarative API structure and is simply a wrapper
-				around the DOM exposed methods for working with SVGs</p>
+				<p>The manager API defines a more declarative API structure and is simply a wrapper around the DOM exposed methods for working with SVGs</p>
 				<p>A simple canvas with a circle on it can be defined using this interface like so:</p>
 				<pre><code class="language-ts"><span class="hljs-keyword">const</span> target: HTMLElement = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'target'</span>)
 

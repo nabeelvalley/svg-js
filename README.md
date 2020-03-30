@@ -1,7 +1,6 @@
 # SVG.js
 
-A zero-dependency library for building and working with SVGs for Typescript and
-Javascript
+A zero-dependency library for building and working with SVGs for Typescript and Javascript
 
 > [Full Documentation](https://nabeelvalley.github.io/svg-js/)
 
@@ -13,18 +12,15 @@ Javascript
 - [ ] Advanced Animations
 - [ ] Usings and Definitions
 - [ ] Filters
-- [ ] ->> NEXT Implement all features listed on the
-      [MDN SVG Documentation](https://developer.mozilla.org/en-US/docs/Web/SVG/Element)
+- [ ] ->> NEXT Implement all features listed on the [MDN SVG Documentation](https://developer.mozilla.org/en-US/docs/Web/SVG/Element)
 
 ## Usage
 
-There are two different API's exposed for building SVG's. The Painter API and
-the Manager API
+There are two different API's exposed for building SVG's. The Painter API and the Manager API
 
 ## Painter API
 
-The Painter API allows SVGs to be build using a builder pattern, an example of
-this can be seen below:
+The Painter API allows SVGs to be build using a builder pattern, an example of this can be seen below:
 
 ```ts
 const target: HTMLElement = document.getElementById('target')
@@ -42,8 +38,7 @@ new SVGPainter({
   .paintOver()
 ```
 
-Additionally reusable segments can be defined using a sequence or a sequence
-generator. For example, the one below defines an animated flower:
+Additionally reusable segments can be defined using a sequence or a sequence generator. For example, the one below defines an animated flower:
 
 ```ts
 const generateFlowerSequence = (x, y) => {
@@ -72,8 +67,7 @@ const generateFlowerSequence = (x, y) => {
 }
 ```
 
-The generated shape can be applied to the canvas using the `paintSequence`
-method:
+The generated shape can be applied to the canvas using the `paintSequence` method:
 
 ```ts
 new SVGPainter({
@@ -92,8 +86,7 @@ new SVGPainter({
 
 ## Manager API
 
-The manager API defines a more declarative API structure and is simply a wrapper
-around the DOM exposed methods for working with SVGs
+The manager API defines a more declarative API structure and is simply a wrapper around the DOM exposed methods for working with SVGs
 
 A simple canvas with a circle on it can be defined using this interface like so:
 
