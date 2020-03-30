@@ -1,7 +1,7 @@
 /**
  * Value Attributes for SVG Animation Elements
  */
-export interface AnimationValue {
+export interface AnimationValueAttribute {
   calcMode?: string
   values?: string
   keyTimes?: string
@@ -14,7 +14,7 @@ export interface AnimationValue {
 /**
  * Value Attributes for SVG Animation Elements
  */
-enum AnimationValueAttribute {
+enum AnimationValueAttributeName {
   calcMode = 'calcMode ',
   values = 'values ',
   keyTimes = 'keyTimes ',
@@ -24,4 +24,4 @@ enum AnimationValueAttribute {
   by = 'by ',
 }
 
-export default AnimationValueAttribute
+export default AnimationValueAttributeName

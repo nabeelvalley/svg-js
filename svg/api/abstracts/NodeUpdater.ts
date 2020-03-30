@@ -3,6 +3,8 @@ import objectToKeyValueArray from '../../generic/functions/objectToKeyValuePair'
 import KeyValuePair from '../../generic/KeyValuePair'
 import createSVGElement from '../../generic/functions/createSVGElement'
 import Exceptions from '../../generic/enums/Exceptions'
+import { AnimationAttribute } from '../../elements/animation/AnimationAttribute'
+import { AnimationGenericAttribute } from '../../elements/animation/AnimationGenericAttribute'
 /**
  * Interface for adding special nodes to SVG Elements
  */
@@ -16,7 +18,9 @@ abstract class NodeUpdater {
    * Add an `animate` to the last created element. Will create either a new animate object with the provided attributes or simply append a given animation
    * @param animation an SVG `animate` element or the list of attributes of one
    */
-  public adddAnimation(animation: Animation | SVGAnimateElement): this {
+  public adddAnimation(
+    animation: AnimationAttribute | SVGAnimateElement
+  ): this {
     return this.handleLastNodeAppend(
       ElementType.animate,
       animation instanceof SVGAnimateElement
@@ -34,19 +38,19 @@ abstract class NodeUpdater {
     type: ElementType,
     data: KeyValuePair<string, number | string>[] | SVGElement
   ): this {
-    const node = this.getWorkingNode()
+    const workingNode = this.getWorkingNode()
 
-    if (!node) throw Exceptions.nodeNull
+    if (!workingNode) throw Exceptions.nodeNull
     else if (data instanceof SVGElement) {
-      node.appendChild(data)
+      workingNode.appendChild(data)
     } else {
-      const node = createSVGElement(type)
+      const newNode = createSVGElement(type)
 
       data?.forEach(attribute =>
-        node.setAttribute(attribute?.key, attribute?.value.toString())
+        newNode.setAttribute(attribute?.key, attribute?.value.toString())
       )
 
-      node.appendChild(node)
+      workingNode.appendChild(newNode)
     }
 
     return this

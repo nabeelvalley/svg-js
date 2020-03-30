@@ -1,5 +1,5 @@
 import NodeUpdater from './NodeUpdater'
-import SVGShapeAttribute from '../../elements/shape/SVGShapeAttribute'
+import GenericShapeAttributeName from '../../elements/shape/GenericShapeAttributeName'
 
 /**
  * Common functionality for updating the colour and stroke styles of SVG elements
@@ -63,9 +63,12 @@ abstract class BasicPainter extends NodeUpdater {
    * @param element element to apply the attributes to
    */
   protected applyPainterAttributes(element: SVGElement): void {
-    element.setAttribute(SVGShapeAttribute.fill, this._fill)
-    element.setAttribute(SVGShapeAttribute.stroke, this._stroke)
-    element.setAttribute(SVGShapeAttribute.strokeWidth, this._strokeWidth)
+    element.setAttribute(GenericShapeAttributeName.fill, this._fill)
+    element.setAttribute(GenericShapeAttributeName.stroke, this._stroke)
+    element.setAttribute(
+      GenericShapeAttributeName.strokeWidth,
+      this._strokeWidth
+    )
   }
 }
 

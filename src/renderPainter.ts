@@ -1,4 +1,7 @@
 import SVGPainter from '../svg/api/SVGPainter'
+import { AnimationAttribute } from '../svg/elements/animation/AnimationAttribute'
+import GenericShapeAttributeName from '../svg/elements/shape/GenericShapeAttributeName'
+import { AnimationGenericAttribute } from '../svg/elements/animation/AnimationGenericAttribute'
 
 const renderPainter = (node: HTMLElement) => {
   const generateFlowerSequence = (x, y) => {
@@ -16,7 +19,13 @@ const renderPainter = (node: HTMLElement) => {
         .setFill('white')
         .setStrokeWidth(2)
         .paintCircle(radius, x, y)
-        .adddAnimation({ id: 'test' } as Animation)
+        .adddAnimation({
+          id: 'test',
+          attributeName: GenericShapeAttributeName.r,
+          values: `${radius};${radius / 2};${radius}`,
+          dur: '5s',
+          repeatCount: 'indefinite',
+        } as AnimationAttribute)
     }
   }
 

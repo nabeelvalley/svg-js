@@ -1,8 +1,10 @@
+import GenericShapeAttributeName from '../shape/GenericShapeAttributeName'
+
 /**
  * Generic Attributes for SVG Animation Elements
  */
-export interface AnimationGeneric {
-  attributeName?: string
+export interface AnimationGenericAttribute {
+  attributeName?: string | GenericShapeAttributeName
   additive?: string
   accumulate?: string
 }
@@ -10,10 +12,10 @@ export interface AnimationGeneric {
 /**
  * Generic Attributes for SVG Animation Elements
  */
-enum AnimationGenericAttriute {
+enum AnimationGenericAttributeName {
   attributeName = 'attributeName ',
   additive = 'additive ',
   accumulate = 'accumulate ',
 }
 
-export default AnimationGenericAttriute
+export default AnimationGenericAttributeName

@@ -1,7 +1,7 @@
 /**
  * Attributes for base SVG Shape Elements
  */
-enum SVGShapeAttribute {
+enum GenericShapeAttributeName {
   /**
    * SVG `svg` and `rect` height
    */
@@ -76,4 +76,4 @@ enum SVGShapeAttribute {
   d = 'd',
 }
 
-export default SVGShapeAttribute
+export default GenericShapeAttributeName

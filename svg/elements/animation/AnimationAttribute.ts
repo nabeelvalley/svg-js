@@ -1,28 +1,30 @@
-import AnimationGenericAttriute, {
-  AnimationGeneric,
+import AnimationGenericAttributeName, {
+  AnimationGenericAttribute,
 } from './AnimationGenericAttribute'
-import AnimationTimingAttribute, { AnimationTiming } from './AnimationTiming'
-import AnimationValueAttribute, {
-  AnimationValue,
+import AnimationTimingAttributeName, {
+  AnimationTimingAttribute,
+} from './AnimationTiming'
+import AnimationValueAttributeName, {
+  AnimationValueAttribute,
 } from './AnimationValueAttribute'
-import GlobalAttribute, { Global } from '../GlobalAttribute'
+import GlobalAttributeName, { Global } from '../GlobalAttribute'
 
 /**
  * SVG Animation element attributes
  */
-export interface Animation
+export interface AnimationAttribute
   extends Global,
-    AnimationGeneric,
-    AnimationTiming,
-    AnimationValue {}
+    AnimationGenericAttribute,
+    AnimationTimingAttribute,
+    AnimationValueAttribute {}
 
 /**
  * SVG Animation element attributes
  */
-type AnimationAttribute =
-  | AnimationGenericAttriute
-  | AnimationTimingAttribute
-  | AnimationValueAttribute
-  | GlobalAttribute
+type AnimationAttributeName =
+  | AnimationGenericAttributeName
+  | AnimationTimingAttributeName
+  | AnimationValueAttributeName
+  | GlobalAttributeName
 
-export default AnimationAttribute
+export default AnimationAttributeName

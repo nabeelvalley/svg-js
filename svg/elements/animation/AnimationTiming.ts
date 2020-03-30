@@ -1,14 +1,14 @@
 /**
  * Timing Attributes for SVG Animation Elements
  */
-export interface AnimationTiming {
+export interface AnimationTimingAttribute {
   begin?: string
   dur?: string
   end?: string
   min?: string
   max?: string
   restart?: string
-  repeatCount?: string
+  repeatCount?: number | 'indefinite'
   repeatDur?: string
   fill?: string
 }
@@ -16,7 +16,7 @@ export interface AnimationTiming {
 /**
  * Timing Attributes for SVG Animation Elements
  */
-enum AnimationTimingAttribute {
+enum AnimationTimingAttributeName {
   begin = 'begin',
   dur = 'dur',
   end = 'end',
@@ -28,4 +28,4 @@ enum AnimationTimingAttribute {
   fill = 'fill ',
 }
 
-export default AnimationTimingAttribute
+export default AnimationTimingAttributeName

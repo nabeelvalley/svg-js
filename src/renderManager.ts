@@ -1,14 +1,14 @@
 import SVGManager from '../svg/api/SVGManager'
 import ElementType from '../svg/elements/ElementType'
-import SVGShapeAttribute from '../svg/elements/shape/SVGShapeAttribute'
+import GenericShapeAttributeName from '../svg/elements/shape/GenericShapeAttributeName'
 
 const renderManager = (node: HTMLElement) => {
   let root = new SVGManager({
     parent: node,
     id: 'manager-view',
     attributes: [
-      { key: SVGShapeAttribute.height, value: '120' },
-      { key: SVGShapeAttribute.width, value: '90vw' },
+      { key: GenericShapeAttributeName.height, value: '120' },
+      { key: GenericShapeAttributeName.width, value: '90vw' },
     ],
   })
 
@@ -17,9 +17,9 @@ const renderManager = (node: HTMLElement) => {
     id: 'background',
     type: ElementType.rect,
     attributes: [
-      { key: SVGShapeAttribute.height, value: '100' },
-      { key: SVGShapeAttribute.width, value: '80vw' },
-      { key: SVGShapeAttribute.fill, value: 'blue' },
+      { key: GenericShapeAttributeName.height, value: '100' },
+      { key: GenericShapeAttributeName.width, value: '80vw' },
+      { key: GenericShapeAttributeName.fill, value: 'blue' },
     ],
   })
 
@@ -28,8 +28,8 @@ const renderManager = (node: HTMLElement) => {
     parent: root,
     type: ElementType.g,
     attributes: [
-      { key: SVGShapeAttribute.height, value: '20px' },
-      { key: SVGShapeAttribute.width, value: '20px' },
+      { key: GenericShapeAttributeName.height, value: '20px' },
+      { key: GenericShapeAttributeName.width, value: '20px' },
     ],
   })
 
@@ -43,10 +43,10 @@ const renderManager = (node: HTMLElement) => {
     parent: root,
     type: ElementType.circle,
     attributes: [
-      { key: SVGShapeAttribute.r, value: '5px' },
-      { key: SVGShapeAttribute.cx, value: '2cm' },
-      { key: SVGShapeAttribute.cy, value: '50px' },
-      { key: SVGShapeAttribute.fill, value: 'red' },
+      { key: GenericShapeAttributeName.r, value: '5px' },
+      { key: GenericShapeAttributeName.cx, value: '2cm' },
+      { key: GenericShapeAttributeName.cy, value: '50px' },
+      { key: GenericShapeAttributeName.fill, value: 'red' },
     ],
   })
 }

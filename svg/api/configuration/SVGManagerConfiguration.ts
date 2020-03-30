@@ -1,8 +1,8 @@
 import ElementType from '../../elements/ElementType'
 import SVGManager from '../SVGManager'
 import GlobalAttribute from '../../elements/GlobalAttribute'
-import SVGShapeAttribute from '../../elements/shape/SVGShapeAttribute'
-import ShapeAttribute from '../../elements/shape/ShapeAttribute'
+import GenericShapeAttributeName from '../../elements/shape/GenericShapeAttributeName'
+import ShapeAttributeName from '../../elements/shape/ShapeAttribute'
 import KeyValuePair from '../../generic/KeyValuePair'
 
 interface SVGManagerConfiguration {
@@ -10,7 +10,7 @@ interface SVGManagerConfiguration {
   id?: string
   class?: string
   type?: ElementType
-  attributes?: KeyValuePair<ShapeAttribute, number | string>[]
+  attributes?: KeyValuePair<ShapeAttributeName, number | string>[]
   style?: CSSStyleDeclaration
 }
 
