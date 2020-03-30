@@ -1,7 +1,7 @@
 import SVGElementType from '../enums/SVGElementType'
 import createSVGElement from '../functions/createSVGElement'
-import SVGShapeAttribute from '../enums/SVGShapeAttribute'
 import BasicPainter from '../abstracts/BasicPainter'
+import SVGShapeAttribute from '../enums/shape/SVGShapeAttribute'
 
 /**
  * Class for drawing an SVG path from Line Commands, information on how these work can be found on [MDN](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths)

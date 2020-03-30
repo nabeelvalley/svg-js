@@ -1,5 +1,5 @@
 import NodeUpdater from './NodeUpdater'
-import SVGShapeAttribute from '../enums/SVGShapeAttribute'
+import SVGShapeAttribute from '../enums/shape/SVGShapeAttribute'
 
 /**
  * Common functionality for updating the colour and stroke styles of SVG elements

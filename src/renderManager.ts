@@ -1,6 +1,6 @@
 import SVGManager from '../svg/api/SVGManager'
 import SVGElementType from '../svg/enums/SVGElementType'
-import SVGShapeAttribute from '../svg/enums/SVGShapeAttribute'
+import SVGShapeAttribute from '../svg/enums/shape/SVGShapeAttribute'
 
 const renderManager = (node: HTMLElement) => {
   let root = new SVGManager({
