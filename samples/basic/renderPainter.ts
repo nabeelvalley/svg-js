@@ -1,7 +1,6 @@
-import SVGPainter from '../svg/api/SVGPainter'
-import { AnimationAttribute } from '../svg/elements/animation/AnimationAttribute'
-import GenericShapeAttributeName from '../svg/elements/shape/GenericShapeAttributeName'
-import { AnimationGenericAttribute } from '../svg/elements/animation/AnimationGenericAttribute'
+import GenericShapeAttributeName from '../../lib/elements/shape/GenericShapeAttributeName'
+import { AnimationAttribute } from '../../lib/elements/animation/AnimationAttribute'
+import { SVGPainter } from '../../lib'
 
 const renderPainter = (node: HTMLElement) => {
   const generateFlowerSequence = (x, y) => {

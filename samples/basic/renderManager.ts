@@ -1,6 +1,6 @@
-import SVGManager from '../svg/api/SVGManager'
-import ElementType from '../svg/elements/ElementType'
-import GenericShapeAttributeName from '../svg/elements/shape/GenericShapeAttributeName'
+import { SVGManager } from '../../lib'
+import GenericShapeAttributeName from '../../lib/elements/shape/GenericShapeAttributeName'
+import ElementType from '../../lib/elements/ElementType'
 
 const renderManager = (node: HTMLElement) => {
   let root = new SVGManager({
