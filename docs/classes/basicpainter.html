@@ -1,0 +1,597 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>BasicPainter | svg-js</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">svg-js</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="basicpainter.html">BasicPainter</a>
+				</li>
+			</ul>
+			<h1>Class BasicPainter</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Common functionality for updating the colour and stroke styles of SVG elements</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<a href="nodeupdater.html" class="tsd-signature-type">NodeUpdater</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">BasicPainter</span>
+								<ul class="tsd-hierarchy">
+									<li>
+										<a href="svgpathbuilder.html" class="tsd-signature-type">SVGPathBuilder</a>
+									</li>
+									<li>
+										<a href="svgpainter.html" class="tsd-signature-type">SVGPainter</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section tsd-is-private-protected">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="basicpainter.html#_fill" class="tsd-kind-icon">_fill</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="basicpainter.html#_stroke" class="tsd-kind-icon">_stroke</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="basicpainter.html#_strokewidth" class="tsd-kind-icon">_stroke<wbr>Width</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="basicpainter.html#adddanimation" class="tsd-kind-icon">addd<wbr>Animation</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="basicpainter.html#applypainterattributes" class="tsd-kind-icon">apply<wbr>Painter<wbr>Attributes</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="basicpainter.html#getfill" class="tsd-kind-icon">get<wbr>Fill</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="basicpainter.html#getstroke" class="tsd-kind-icon">get<wbr>Stroke</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="basicpainter.html#getstrokewidth" class="tsd-kind-icon">get<wbr>Stroke<wbr>Width</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="basicpainter.html#getworkingnode" class="tsd-kind-icon">get<wbr>Working<wbr>Node</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="basicpainter.html#setfill" class="tsd-kind-icon">set<wbr>Fill</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="basicpainter.html#setstroke" class="tsd-kind-icon">set<wbr>Stroke</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="basicpainter.html#setstrokewidth" class="tsd-kind-icon">set<wbr>Stroke<wbr>Width</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-private-protected">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+					<a name="_fill" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _fill</h3>
+					<div class="tsd-signature tsd-kind-icon">_fill<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;white&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/nabeelvalley/svg-js/blob/4a6e6bf/lib/api/abstracts/BasicPainter.ts#L8">api/abstracts/BasicPainter.ts:8</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+					<a name="_stroke" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _stroke</h3>
+					<div class="tsd-signature tsd-kind-icon">_stroke<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;black&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/nabeelvalley/svg-js/blob/4a6e6bf/lib/api/abstracts/BasicPainter.ts#L25">api/abstracts/BasicPainter.ts:25</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+					<a name="_strokewidth" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _stroke<wbr>Width</h3>
+					<div class="tsd-signature tsd-kind-icon">_stroke<wbr>Width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;1px&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/nabeelvalley/svg-js/blob/4a6e6bf/lib/api/abstracts/BasicPainter.ts#L43">api/abstracts/BasicPainter.ts:43</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="adddanimation" class="tsd-anchor"></a>
+					<h3>addd<wbr>Animation</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">addd<wbr>Animation<span class="tsd-signature-symbol">(</span>animation<span class="tsd-signature-symbol">: </span><a href="../interfaces/animationattribute.html" class="tsd-signature-type">AnimationAttribute</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">SVGAnimateElement</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="nodeupdater.html">NodeUpdater</a>.<a href="nodeupdater.html#adddanimation">adddAnimation</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/nabeelvalley/svg-js/blob/4a6e6bf/lib/api/abstracts/NodeUpdater.ts#L21">api/abstracts/NodeUpdater.ts:21</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Add an <code>animate</code> to the last created element. Will create either a new animate object with the provided attributes or simply append a given animation</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>animation: <a href="../interfaces/animationattribute.html" class="tsd-signature-type">AnimationAttribute</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">SVGAnimateElement</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>an SVG <code>animate</code> element or the list of attributes of one</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="applypainterattributes" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> apply<wbr>Painter<wbr>Attributes</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">apply<wbr>Painter<wbr>Attributes<span class="tsd-signature-symbol">(</span>element<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SVGElement</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/nabeelvalley/svg-js/blob/4a6e6bf/lib/api/abstracts/BasicPainter.ts#L65">api/abstracts/BasicPainter.ts:65</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Apply the fill, stroke, and stroke-width attributes to element based on the current painter state</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>element: <span class="tsd-signature-type">SVGElement</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>element to apply the attributes to</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getfill" class="tsd-anchor"></a>
+					<h3>get<wbr>Fill</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Fill<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/nabeelvalley/svg-js/blob/4a6e6bf/lib/api/abstracts/BasicPainter.ts#L12">api/abstracts/BasicPainter.ts:12</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get fill color for future paints, default white</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getstroke" class="tsd-anchor"></a>
+					<h3>get<wbr>Stroke</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Stroke<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/nabeelvalley/svg-js/blob/4a6e6bf/lib/api/abstracts/BasicPainter.ts#L30">api/abstracts/BasicPainter.ts:30</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get stroke color for future paints, default black</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getstrokewidth" class="tsd-anchor"></a>
+					<h3>get<wbr>Stroke<wbr>Width</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Stroke<wbr>Width<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/nabeelvalley/svg-js/blob/4a6e6bf/lib/api/abstracts/BasicPainter.ts#L48">api/abstracts/BasicPainter.ts:48</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get stroke width for future paints, default 1px</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="getworkingnode" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> <span class="tsd-flag ts-flagAbstract">Abstract</span> get<wbr>Working<wbr>Node</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Working<wbr>Node<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SVGElement</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="nodeupdater.html">NodeUpdater</a>.<a href="nodeupdater.html#getworkingnode">getWorkingNode</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/nabeelvalley/svg-js/blob/4a6e6bf/lib/api/abstracts/NodeUpdater.ts#L15">api/abstracts/NodeUpdater.ts:15</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Method to get the current working node when using the update functonality</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">SVGElement</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setfill" class="tsd-anchor"></a>
+					<h3>set<wbr>Fill</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Fill<span class="tsd-signature-symbol">(</span>color<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/nabeelvalley/svg-js/blob/4a6e6bf/lib/api/abstracts/BasicPainter.ts#L20">api/abstracts/BasicPainter.ts:20</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Set fill color for future paints, default white</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>color: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>fill color</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setstroke" class="tsd-anchor"></a>
+					<h3>set<wbr>Stroke</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Stroke<span class="tsd-signature-symbol">(</span>color<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/nabeelvalley/svg-js/blob/4a6e6bf/lib/api/abstracts/BasicPainter.ts#L38">api/abstracts/BasicPainter.ts:38</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Set stroke color for future paints, default black</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>color: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>stroke color</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setstrokewidth" class="tsd-anchor"></a>
+					<h3>set<wbr>Stroke<wbr>Width</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Stroke<wbr>Width<span class="tsd-signature-symbol">(</span>width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/nabeelvalley/svg-js/blob/4a6e6bf/lib/api/abstracts/BasicPainter.ts#L56">api/abstracts/BasicPainter.ts:56</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Set stroke width for future paints, default 1px</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>width: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>stroke width</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="../enums/animationgenericattributename.html" class="tsd-kind-icon">Animation<wbr>Generic<wbr>Attribute<wbr>Name</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="../enums/animationtimingattributename.html" class="tsd-kind-icon">Animation<wbr>Timing<wbr>Attribute<wbr>Name</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="../enums/animationvalueattributename.html" class="tsd-kind-icon">Animation<wbr>Value<wbr>Attribute<wbr>Name</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="../enums/elementtype.html" class="tsd-kind-icon">Element<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="../enums/exceptions.html" class="tsd-kind-icon">Exceptions</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="../enums/genericshapeattributename.html" class="tsd-kind-icon">Generic<wbr>Shape<wbr>Attribute<wbr>Name</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="../enums/globalattribute.html" class="tsd-kind-icon">Global<wbr>Attribute</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class">
+						<a href="basicpainter.html" class="tsd-kind-icon">Basic<wbr>Painter</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+								<a href="basicpainter.html#_fill" class="tsd-kind-icon">_fill</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+								<a href="basicpainter.html#_stroke" class="tsd-kind-icon">_stroke</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+								<a href="basicpainter.html#_strokewidth" class="tsd-kind-icon">_stroke<wbr>Width</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="basicpainter.html#adddanimation" class="tsd-kind-icon">addd<wbr>Animation</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+								<a href="basicpainter.html#applypainterattributes" class="tsd-kind-icon">apply<wbr>Painter<wbr>Attributes</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="basicpainter.html#getfill" class="tsd-kind-icon">get<wbr>Fill</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="basicpainter.html#getstroke" class="tsd-kind-icon">get<wbr>Stroke</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="basicpainter.html#getstrokewidth" class="tsd-kind-icon">get<wbr>Stroke<wbr>Width</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="basicpainter.html#getworkingnode" class="tsd-kind-icon">get<wbr>Working<wbr>Node</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="basicpainter.html#setfill" class="tsd-kind-icon">set<wbr>Fill</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="basicpainter.html#setstroke" class="tsd-kind-icon">set<wbr>Stroke</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="basicpainter.html#setstrokewidth" class="tsd-kind-icon">set<wbr>Stroke<wbr>Width</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-class">
+						<a href="nodeupdater.html" class="tsd-kind-icon">Node<wbr>Updater</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="svgmanager.html" class="tsd-kind-icon">SVGManager</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="svgpainter.html" class="tsd-kind-icon">SVGPainter</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="svgpathbuilder.html" class="tsd-kind-icon">SVGPath<wbr>Builder</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/animationattribute.html" class="tsd-kind-icon">Animation<wbr>Attribute</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/animationgenericattribute.html" class="tsd-kind-icon">Animation<wbr>Generic<wbr>Attribute</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/animationtimingattribute.html" class="tsd-kind-icon">Animation<wbr>Timing<wbr>Attribute</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/animationvalueattribute.html" class="tsd-kind-icon">Animation<wbr>Value<wbr>Attribute</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/circleattribute.html" class="tsd-kind-icon">Circle<wbr>Attribute</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/ellipseattribute.html" class="tsd-kind-icon">Ellipse<wbr>Attribute</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/global.html" class="tsd-kind-icon">Global</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="../interfaces/keyvaluepair.html" class="tsd-kind-icon">Key<wbr>Value<wbr>Pair</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/lineattribute.html" class="tsd-kind-icon">Line<wbr>Attribute</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/pathattribute.html" class="tsd-kind-icon">Path<wbr>Attribute</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/polylineattribute.html" class="tsd-kind-icon">Poly<wbr>Line<wbr>Attribute</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/polygonattribute.html" class="tsd-kind-icon">Polygon<wbr>Attribute</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/rectattribute.html" class="tsd-kind-icon">Rect<wbr>Attribute</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/svgmanagerconfiguration.html" class="tsd-kind-icon">SVGManager<wbr>Configuration</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/svgpainterconfiguration.html" class="tsd-kind-icon">SVGPainter<wbr>Configuration</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#animationattributename" class="tsd-kind-icon">Animation<wbr>Attribute<wbr>Name</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#shapeattributename" class="tsd-kind-icon">Shape<wbr>Attribute<wbr>Name</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="../globals.html#svgns" class="tsd-kind-icon">svgNS</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#applymixins" class="tsd-kind-icon">apply<wbr>Mixins</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#createsvgelement" class="tsd-kind-icon">createSVGElement</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#objecttokeyvaluearray" class="tsd-kind-icon">object<wbr>ToKey<wbr>Value<wbr>Array</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

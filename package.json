@@ -1,20 +1,23 @@
 {
-  "name": "snake-svg",
+  "name": "svg-js",
   "version": "1.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "author": {
+    "name": "Nabeel Valley"
+  },
   "license": "MIT",
   "scripts": {
     "start": "concurrently --kill-others \"yarn run parcel-start\" \"yarn run ts-watch\"",
     "ts-watch": "tsc --watch --noEmit lib/index.ts",
     "build": "tsc",
-    "parcel-start": "parcel samples/basic/index.html"
-  },
-  "dependencies": {
-    "parcel-bundler": "^1.12.4",
-    "typescript": "^3.8.3"
+    "parcel-start": "parcel samples/basic/index.html",
+    "generate-docs": "typedoc --options tsdoc.json"
   },
   "devDependencies": {
-    "concurrently": "^5.1.0"
+    "parcel-bundler": "^1.12.4",
+    "typescript": "^3.8.3",
+    "concurrently": "^5.1.0",
+    "typedoc": "^0.17.3"
   }
 }
