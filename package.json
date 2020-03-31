@@ -6,6 +6,9 @@
   "author": {
     "name": "Nabeel Valley"
   },
+  "repository": {
+    "url": "https://github.com/nabeelvalley/svg-js"
+  },
   "license": "MIT",
   "scripts": {
     "start": "concurrently --kill-others \"yarn run parcel-start\" \"yarn run ts-watch\"",

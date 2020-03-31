@@ -2,7 +2,7 @@
 
 A zero-dependency library for building and working with SVGs for Typescript and Javascript
 
-> [Full Documentation](https://nabeelvalley.github.io/svg-js/)
+> [Documentation](https://nabeelvalley.github.io/svg-js/) | [GitHub](https://github.com/nabeelvalley/svg-js)
 
 ## Feature Status
 
