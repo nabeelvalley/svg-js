@@ -19,7 +19,7 @@ export interface Global {
 /**
  * Global SVG Element Attributes
  */
-enum GlobalAttribute {
+enum GlobalAttributeName {
   /**
    * SVG Element ID
    */
@@ -34,4 +34,4 @@ enum GlobalAttribute {
   style = 'style',
 }
 
-export default GlobalAttribute
+export default GlobalAttributeName
