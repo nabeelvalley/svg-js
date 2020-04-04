@@ -1,5 +1,6 @@
 import NodeUpdater from './NodeUpdater'
 import GenericShapeAttributeName from '../../elements/shape/GenericShapeAttributeName'
+import NodeWrapper from './NodeWrapper'
 
 /**
  * Common functionality for updating the colour and stroke styles of SVG elements

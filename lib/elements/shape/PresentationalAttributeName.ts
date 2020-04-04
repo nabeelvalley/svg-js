@@ -1,0 +1,27 @@
+enum PresentationalAttributeName {
+  clipPath = 'clip-path',
+  clipRule = 'clip-rule',
+  color = 'color',
+  colorInterpolation = 'color-interpolation',
+  colorRendering = 'color-rendering',
+  cursor = 'cursor',
+  display = 'display',
+  fillDisplay = 'fill-opacity',
+  fillRule = 'fill-rule',
+  filter = 'filter',
+  mask = 'mask',
+  opacity = 'opacity',
+  pointer = 'pointer-events',
+  shape = 'shape-rendering',
+  strokeDashArray = 'stroke-dasharray',
+  strokeDashOffset = 'stroke-dashoffset',
+  strokeLineCap = 'stroke-linecap',
+  strokeLineJoin = 'stroke-linejoin',
+  strokeMiterLimit = 'stroke-miterlimit',
+  strokeOpacity = 'stroke-opacity',
+  transform = 'transform',
+  vectorEffect = 'vector-effect',
+  visibility = 'visibility',
+}
+
+export default PresentationalAttributeName

@@ -3,8 +3,9 @@ import objectToKeyValueArray from '../../generic/functions/objectToKeyValuePair'
 import KeyValuePair from '../../generic/KeyValuePair'
 import createSVGElement from '../../generic/functions/createSVGElement'
 import Exceptions from '../../generic/enums/Exceptions'
-import { AnimationAttribute } from '../../elements/animation/AnimationAttribute'
+import { AnimationAnimateAttribute } from '../../elements/animation/AnimationAnimateAttribute'
 import { AnimationGenericAttribute } from '../../elements/animation/AnimationGenericAttribute'
+import AnimationAnimateMotionAttribute from '../../elements/animation/AnimationAnimateMotionAttribute'
 /**
  * Interface for adding special nodes to SVG Elements
  */
@@ -18,9 +19,26 @@ abstract class NodeUpdater {
    * Add an `animate` to the last created element. Will create either a new animate object with the provided attributes or simply append a given animation
    * @param animation an SVG `animate` element or the list of attributes of one
    */
-  public addAnimation(animation: AnimationAttribute | SVGAnimateElement): this {
+  public addAnimation(
+    animation: AnimationAnimateAttribute | SVGAnimateElement
+  ): this {
     return this.handleLastNodeAppend(
       ElementType.animate,
+      animation instanceof SVGAnimateElement
+        ? animation
+        : objectToKeyValueArray(animation)
+    )
+  }
+
+  /**
+   * Add an `animate` to the last created element. Will create either a new animate object with the provided attributes or simply append a given animation
+   * @param animation an SVG `animateMotion` element or the list of attributes of one
+   */
+  public addAnimateMotion(
+    animation: AnimationAnimateMotionAttribute | SVGAnimateMotionElement
+  ): this {
+    return this.handleLastNodeAppend(
+      ElementType.animateMotion,
       animation instanceof SVGAnimateElement
         ? animation
         : objectToKeyValueArray(animation)

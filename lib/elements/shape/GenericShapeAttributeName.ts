@@ -31,6 +31,10 @@ enum GenericShapeAttributeName {
    */
   r = 'r',
   /**
+   * SVG `circle` circumference
+   */
+  pathLength = 'pathLength',
+  /**
    * SVG `ellipse` x radius, or in this case of a `rect` this is the x corner radius
    */
   rx = 'rx',

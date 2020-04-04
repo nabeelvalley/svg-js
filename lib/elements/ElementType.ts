@@ -36,9 +36,21 @@ enum ElementType {
    */
   path = 'path',
   /**
-   * SVG `animate` element, applicable properties are in the AnimationAttribute enum
+   * SVG `animate` element, applicable properties are in the AnimationAnimateAttributeName enum
    */
   animate = 'animate',
+  /**
+   * SVG `animateMotion` element, appliccable properties are in the AnimateMotionAttributeName enum
+   */
+  animateMotion = 'animateMotion',
+  /**
+   * SVG `clipPath` element
+   */
+  clipPath = 'clipPath',
+  /**
+   * SVG `use` element
+   */
+  use = 'use',
 }
 
 export default ElementType

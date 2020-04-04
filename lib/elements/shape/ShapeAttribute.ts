@@ -1,5 +1,7 @@
 import GlobalAttributeName, { Global } from '../GlobalAttribute'
 import GenericShapeAttributeName from './GenericShapeAttributeName'
+import PresentationalAttributeName from './PresentationalAttributeName'
+import UsingAttributeName from './UsingAttributeName'
 
 export interface RectAttribute {
   height: number | string
@@ -12,6 +14,7 @@ export interface CircleAttribute {
   r: number | string
   cx: number | string
   cy: number | string
+  pathLength: number | string
 }
 
 export interface EllipseAttribute {
@@ -43,6 +46,10 @@ export interface PathAttribute extends Global {
 /**
  * Atttributes for SVG Shape elements
  */
-type ShapeAttributeName = GlobalAttributeName | GenericShapeAttributeName
+type ShapeAttributeName =
+  | GlobalAttributeName
+  | GenericShapeAttributeName
+  | PresentationalAttributeName
+  | UsingAttributeName
 
 export default ShapeAttributeName

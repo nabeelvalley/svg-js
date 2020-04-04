@@ -7,8 +7,10 @@ import createSVGElement from '../generic/functions/createSVGElement'
 import BasicPainter from './abstracts/BasicPainter'
 import GenericShapeAttributeName from '../elements/shape/GenericShapeAttributeName'
 import ShapeAttributeName from '../elements/shape/ShapeAttribute'
+import NodeWrapper from './abstracts/NodeWrapper'
+import UsingAttributeName from '../elements/shape/UsingAttributeName'
 
-class SVGPainter extends BasicPainter {
+class SVGPainter extends NodeWrapper {
   protected _parent: SVGElement
   public getParent(): SVGElement {
     return this._parent
@@ -38,6 +40,12 @@ class SVGPainter extends BasicPainter {
     const workingNode = this._canvas[this._canvas.length - 1]
     return workingNode
   }
+
+  /**
+   * Replace the working node with the given node
+   * @param node new SVG node to replace working node
+   */
+  protected setWorkingNode(node: SVGElement) {}
 
   /**
    * Create a new Painter Instance. If an SVGElement is provided this will be set as the parent, if a DOM node is provded then an SVG node will be created inside of this
@@ -243,6 +251,12 @@ class SVGPainter extends BasicPainter {
     )
   }
 
+  public addUsing(
+    attributes: KeyValuePair<ShapeAttributeName, number | string>[]
+  ): this {
+    return this.handleElementCreation(ElementType.use, () => {}, attributes)
+  }
+
   /**
    * Paints given SVG element to the canvas as-is
    * @param element element to paint
@@ -275,6 +289,11 @@ class SVGPainter extends BasicPainter {
     return this
   }
 
+  /**
+   * Apply non-basic attributes to the provided element
+   * @param element element to apply attributes to
+   * @param attributes attributes to apply
+   */
   private applyAdditionalAttributes(
     element: SVGElement,
     attributes: KeyValuePair<ShapeAttributeName, number | string>[]

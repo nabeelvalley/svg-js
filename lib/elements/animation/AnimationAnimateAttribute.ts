@@ -12,7 +12,7 @@ import GlobalAttributeName, { Global } from '../GlobalAttribute'
 /**
  * SVG Animation element attributes
  */
-export interface AnimationAttribute
+export interface AnimationAnimateAttribute
   extends Global,
     AnimationGenericAttribute,
     AnimationTimingAttribute,
@@ -21,10 +21,10 @@ export interface AnimationAttribute
 /**
  * SVG Animation element attributes
  */
-type AnimationAttributeName =
+export type AnimationAnimateAttributeName =
   | AnimationGenericAttributeName
   | AnimationTimingAttributeName
   | AnimationValueAttributeName
   | GlobalAttributeName
 
-export default AnimationAttributeName
+export default AnimationAnimateAttributeName
