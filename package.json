@@ -11,7 +11,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "start": "concurrently --kill-others \"yarn run parcel-start\" \"yarn run ts-watch\"",
+    "start": "concurrently --kill-others \"npm:parcel-start\" \"npm:ts-watch\"",
     "ts-watch": "tsc --watch --noEmit lib/index.ts",
     "build": "tsc",
     "parcel-start": "parcel samples/basic/index.html",
